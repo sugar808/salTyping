@@ -326,12 +326,10 @@ const level = document.getElementById('level');
 const correct = document.getElementById('correct');
 const wrong = document.getElementById('wrong');
 const accuracy = document.getElementById('accuracy');
-const score = document.getElementById('score');
 const gauge = document.getElementById('gauge');
 const typeSpeed = document.getElementById('typeSpeed');
 const totalTypeSpeed = document.getElementById('totalTypeSpeed');
 const lastRecords = document.getElementById('lastRecords');
-const lastRecord_score = document.getElementById('lastRecord_score');
 const lastRecord_correct = document.getElementById('lastRecord_correct');
 const lastRecord_wrong = document.getElementById('lastRecord_wrong');
 const lastRecord_accuracy = document.getElementById('lastRecord_accuracy');
@@ -363,7 +361,6 @@ const regex5 = /([ん])(きゃ|きぃ|きゅ|きぇ|きょ|ぎゃ|ぎぃ|ぎゅ|
 const quesBuffer = [];
 const pickKanji = [];
 const pickKana = [];
-const record_score = [];
 const record_correct = [];
 const record_wrong = [];
 const record_accuracy = [];
@@ -389,12 +386,9 @@ let random = 0;
 let timeIndex = 50;
 let culResult = 0;
 let enteredIndex = 0;
-let scorePoint = 100;
-let scoreBuffer = 0;
 let correctBuffer = 0;
 let correctBuffer2 = 0;
 let wrongBuffer = 0;
-let scoreMultiPlier = 1;
 let questionSteps = 0;
 let typeBuffer = 0;
 let Num = 0;
@@ -618,7 +612,6 @@ document.addEventListener('keydown', (e) => {
         enteredIndex = 0;
         selectedRandom.length = 0;
         quesBuffer.length = 0;
-        scoreBuffer = 0;
         correctBuffer = 0;
         correctBuffer2 = 0;
         wrongBuffer = 0;
@@ -642,9 +635,7 @@ document.addEventListener('keydown', (e) => {
         accuracy.innerText = '0';
         reflectRoman.innerText = 'Please press Space';
         caret.innerText = '';
-        score.innerText = '0';
         lastRecords.innerText = '';
-        lastRecord_score.innerText = '';
         lastRecord_correct.innerText = '';
         lastRecord_wrong.innerText = '';
         lastRecord_accuracy.innerText = '';
@@ -769,7 +760,7 @@ const setWord = () => {
     }
     // 乱数を生成
     random = Math.floor(Math.random() * pickKanji.length);
-    
+
     if(questionSteps < 7) {
         level.innerText = 'Possible';
         level.classList.add('greenyellow');
@@ -820,8 +811,12 @@ const setWord = () => {
         KanaArea.innerText = selectedWord;
 
     }
-    pickKanji.splice(random, 1);
-    pickKana.splice(random, 1);
+    if(!easy && !hard && !impossible) {
+        console.log('koko');
+        pickKanji.splice(random, 1);
+        pickKana.splice(random, 1);
+
+    }
 
     if(pickKanji.length === 0) {
         console.log('end');
@@ -862,20 +857,17 @@ const timer = () => {
             correctSpell.innerText = '';
             totalTypeSpeed.innerText = String(SKPM);
 
-            record_score.push(scoreBuffer);
             record_correct.push(correctBuffer2);
             record_wrong.push(wrongBuffer);
             record_accuracy.push(SKPM);
             console.log(record_accuracy);
 
-            if(record_score[1]) {
+            if(record_correct[1]) {
                 lastRecords.innerText = '>>前回の記録';
-                lastRecord_score.innerText = 'スコア：' + record_score[0];
                 lastRecord_correct.innerText = '正：' + record_correct[0];
                 lastRecord_wrong.innerText = '誤：' + record_wrong[0];
                 lastRecord_accuracy.innerText = 'SKPM：' + record_accuracy[0];
  
-                record_score.shift();
                 record_correct.shift();
                 record_wrong.shift();
                 record_accuracy.shift();
@@ -1057,9 +1049,6 @@ const correctCal = () => {
     totalRoman += romanBuffer;
    
     culResult = Number(correct.textContent) / enteredIndex * 100;
-    scorePoint = scorePoint * scoreMultiPlier;
-    scoreBuffer += scorePoint;
-    score.innerText = String(scoreBuffer);
 
     reflectRoman.innerText = totalRoman;
     accuracy.innerText = culResult.toFixed(1);
@@ -1068,12 +1057,8 @@ const wrongCal = () => {
     wrongBuffer++;
 
     wrong.innerText = String(wrongBuffer);
-    scorePoint = 100;
         
     culResult = Number(correct.textContent) / enteredIndex * 100;
-    scoreBuffer -= 300;
-    if(scoreBuffer <= 0) scoreBuffer = 0;
-    score.innerText = String(scoreBuffer);
 
     accuracy.innerText = culResult.toFixed(1);
 };
