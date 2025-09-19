@@ -691,30 +691,6 @@ const setWord = () => {
 
     }
 
-    // 乱数を生成
-    if(questionSteps < 7) {
-        random = Math.floor(Math.random() * Object.keys(words2).length);
-
-    } else if(questionSteps >= 7 && questionSteps < 14) {
-        random = Math.floor(Math.random() * Object.keys(words3).length);
-
-    } else if(questionSteps >= 14 && questionSteps < 21) {
-        random = Math.floor(Math.random() * Object.keys(words4).length);
-
-    } else if(questionSteps >= 21 && questionSteps < 28) {
-        random = Math.floor(Math.random() * Object.keys(words5).length);
-
-    } else if(questionSteps >= 28 && questionSteps < 35) {
-        random = Math.floor(Math.random() * Object.keys(words6).length);
-
-    } else if(questionSteps >= 35 && questionSteps < 42) {
-        random = Math.floor(Math.random() * Object.keys(words7).length);
-
-    } else if(questionSteps >= 42 && questionSteps < 49) {
-        random = Math.floor(Math.random() * Object.keys(wordsNoLimit).length);
-
-    }
-
     // createは、スイッチの役割
     if(!create && questionSteps < 7) {
         for(const buffer in words2) {
@@ -791,13 +767,9 @@ const setWord = () => {
         selectedRandom.length = 0;
 
     }
-    if(selectedRandom.indexOf(random) >= 0) {
-        setWord();
-        return;
-
-    }
-    selectedRandom.push(random);
-
+    // 乱数を生成
+    random = Math.floor(Math.random() * pickKanji.length);
+    
     if(questionSteps < 7) {
         level.innerText = 'Possible';
         level.classList.add('greenyellow');
@@ -828,6 +800,9 @@ const setWord = () => {
     if(easy) {
         questionSteps = 0;
 
+    } else if(hard) {
+        questionSteps = 22;
+
     } else if(impossible) {
         questionSteps = 42;
 
@@ -838,9 +813,22 @@ const setWord = () => {
 
     selectedWord = pickKana[random];
     selectedDisplay = pickKanji[random];
+
     q.innerText = selectedDisplay;
+
     if(KanaArea.textContent) {
         KanaArea.innerText = selectedWord;
+
+    }
+    pickKanji.splice(random, 1);
+    pickKana.splice(random, 1);
+
+    if(pickKanji.length === 0) {
+        console.log('end');
+        start = false;
+        create = false;
+        end = true;
+        return;
 
     }
 
