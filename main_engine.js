@@ -185,6 +185,7 @@ const SE = [
     new Audio('./SE/つるはしで掘る4.mp3'),
     new Audio('./SE/宝箱を開ける.mp3'),
     new Audio('./SE/決定ボタンを押す43.mp3'),
+    new Audio('./SE/決定ボタンを押す14.mp3'),
 ];
 const words2 = {
     '米': 'こめ',
@@ -314,6 +315,9 @@ const Achievements = [
 ];
 
 // board1
+const gauge = document.getElementById('gauge');
+const typeSpeed = document.getElementById('typeSpeed');
+const maxSpeed = document.getElementById('maxSpeed');
 const reflectTime = document.getElementById('reflectTime');
 const q = document.getElementById('q');
 const KanaArea = document.getElementById('KanaArea');
@@ -326,8 +330,6 @@ const level = document.getElementById('level');
 const correct = document.getElementById('correct');
 const wrong = document.getElementById('wrong');
 const accuracy = document.getElementById('accuracy');
-const gauge = document.getElementById('gauge');
-const typeSpeed = document.getElementById('typeSpeed');
 const totalTypeSpeed = document.getElementById('totalTypeSpeed');
 const lastRecords = document.getElementById('lastRecords');
 const lastRecord_correct = document.getElementById('lastRecord_correct');
@@ -364,7 +366,7 @@ const pickKana = [];
 const record_correct = [];
 const record_wrong = [];
 const record_accuracy = [];
-const total_type_time = [];
+const max_type_time = [];
 const selectedRandom = [];
 
 console.log(aboutThema.item(0).value);
@@ -393,6 +395,8 @@ let questionSteps = 0;
 let typeBuffer = 0;
 let Num = 0;
 let SKPM = 0;
+let speed = 0;
+let time = 0;
 
 let totalRoman = '';
 let selectedWord = '';
@@ -587,6 +591,7 @@ submitBtn1.addEventListener('click', () => {
 document.addEventListener('keydown', (e) => {
     // タイピングゲーム開始のイベント
     if(e.key === ' ' && !start && !end) {
+        // start_time = performance.now();
         e.preventDefault();
         reflectRoman.innerText = '';
         setWord();
@@ -629,6 +634,7 @@ document.addEventListener('keydown', (e) => {
 
         }
 
+        maxSpeed.innerText = '';
         q.innerText = 'Spaceキーを押してください';
         correct.innerText = '0';
         wrong.innerText = '0';
@@ -1010,7 +1016,6 @@ const judge = () => {
     if(expectedValue === '' || expectedValue2 === '' || expectedValue3 === '') {
         quesBuffer.shift();
         selectedWord = quesBuffer.join('');
-        // q.innerText = selectedWord;
 
         // 予測をすべてリセット
         expectedValue = '';
@@ -1068,14 +1073,20 @@ const calSKPM = () => {
 };
 const liveCal = () => {
     cal = setInterval(() => {
-        let speed = 0;
         end_time = performance.now();
-        total_type_time.push((end_time - start_time) / 1000);
-        speed = (correctBuffer / (total_type_time[total_type_time.length - 1])).toFixed(1);
-        typeSpeed.innerText = String(speed);
+        time = (end_time - start_time) / 1000;
+        speed = correctBuffer / time;
+        max_type_time.push(speed);
+        typeSpeed.innerText = String(speed.toFixed(1));
+
+        const max = max_type_time.reduce((acc, cur) => {
+            return cur > acc ? cur : acc;
+        },max_type_time[0]);
+
+        maxSpeed.innerText = String(max.toFixed(1));
 
         gauge.style.width = speed * 20 + 'px';
-    }, 50);
+    }, 40);
 };
 liveCal();
 
