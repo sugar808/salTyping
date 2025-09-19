@@ -15,7 +15,12 @@
     </header>
     <main>
         <div id="board1">
-            <h3 id="reflectTime">残り時間：</h3>
+            <div id="gaugeBar">
+                <div id="gauge"></div>
+            </div>
+            <h3>リアルタイム速度：<span id="typeSpeed">0</span>回/秒</h3>
+            <h3>最大速度：<span id="maxSpeed"></span>回/秒</h3>
+            <h2 id="reflectTime">残り時間：</h2>
             <h1 id="q">Spaceキーを押してください</h1>
             <h2 id="KanaArea"></h2>
             <h3><span id="reflectRoman">Please press Space</span><span id="correctSpell" class="colored"></span><span id="caret"></span></h3>
@@ -23,13 +28,9 @@
 
         <div id="board2">
             <h3>Level：<span id="level"></span></h3>
-            <h3>正打：<span id="correct">0</span>回</h3>
-            <h3>誤打：<span id="wrong">0</span>回</h3>
+            <h3>正：<span id="correct">0</span>回</h3>
+            <h3>誤：<span id="wrong">0</span>回</h3>
             <h3>正誤率：<span id="accuracy">0</span>%</h3>
-            <div id="gaugeBar">
-                <div id="gauge"></div>
-            </div>
-            <h3>リアルタイム速度：<span id="typeSpeed">0</span>回/秒</h3>
             <h3>SKPM：<span id="totalTypeSpeed">0</span></h3>
             <h2 id="lastRecords" class="greenyellow"></h2>
             <h3 id="lastRecord_score"></h3>
@@ -42,27 +43,27 @@
         <div id="board3">
             <h3 class="setting">Settings</h3>
             <div class="difficultyMenu"><h4>難易度</h4>
-                <input type="radio" name="difficulty" value="Easy">Easy
-                <input type="radio" name="difficulty" value="Normal" checked>Normal
-                <input type="radio" name="difficulty" value="Hard">Hard
-                <input type="radio" name="difficulty" value="Impossible">Impossible
+                <input class="btn" type="radio" name="difficulty" value="Easy">Easy
+                <input class="btn" type="radio" name="difficulty" value="Normal" checked>Normal
+                <input class="btn" type="radio" name="difficulty" value="Hard">Hard
+                <input class="btn" type="radio" name="difficulty" value="Impossible">Impossible
             </div>
             <div class="fontMenu"><h4>フォント</h4>
-                <input type="radio" name="fontType" value="Mochi">MochiyPopOne
-                <input type="radio" name="fontType" value="Dot" checked>DotGothic16
-                <input type="radio" name="fontType" value="Yusei">YuseiMagic
-                <input type="radio" name="fontType" value="Rockn">RocknRollOne
+                <input class="btn" type="radio" name="fontType" value="Mochi">MochiyPopOne
+                <input class="btn" type="radio" name="fontType" value="Dot" checked>DotGothic16
+                <input class="btn" type="radio" name="fontType" value="Yusei">YuseiMagic
+                <input class="btn" type="radio" name="fontType" value="Rockn">RocknRollOne
             </div>
             <div class="themaMenu"><h4>テーマ</h4>
-                <input type="radio" name="aboutThema" value="dark" checked>dark
-                <input type="radio" name="aboutThema" value="Japanese_modern">Japanese_modern
-                <input type="radio" name="aboutThema" value="gradation">gradation
+                <input class="btn" type="radio" name="aboutThema" value="dark" checked>dark
+                <input class="btn" type="radio" name="aboutThema" value="Japanese_modern">Japanese_modern
+                <input class="btn" type="radio" name="aboutThema" value="gradation">gradation
             </div>
             <div class="type_soundsMenu"><h4>タイプ音</h4>
-                <input type="radio" name="type_sounds" value="normal" checked>normal
-                <input type="radio" name="type_sounds" value="light">light
-                <input type="radio" name="type_sounds" value="comedy">comedy
-                <input type="radio" name="type_sounds" value="off">off
+                <input class="btn" type="radio" name="type_sounds" value="normal" checked>normal
+                <input class="btn" type="radio" name="type_sounds" value="light">light
+                <input class="btn" type="radio" name="type_sounds" value="comedy">comedy
+                <input class="btn" type="radio" name="type_sounds" value="off">off
             </div>
         </div>
 
