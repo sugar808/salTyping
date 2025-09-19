@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja" id="html" class="Dot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalTyping</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body id="background" class="dark">
+    <header>
+        <div id="board5">
+            <h4 id="pressedKey"></h4>
+        </div>
+    </header>
+    <main>
+        <div id="board1">
+            <h3 id="reflectTime">残り時間：</h3>
+            <h1 id="q">Spaceキーを押してください</h1>
+            <h2 id="KanaArea"></h2>
+            <h3><span id="reflectRoman">Please press Space</span><span id="correctSpell" class="colored"></span><span id="caret"></span></h3>
+        </div>
+
+        <div id="board2">
+            <h3>Level：<span id="level"></span></h3>
+            <h3>正：<span id="correct">0</span>回</h3>
+            <h3>誤：<span id="wrong">0</span>回</h3>
+            <h3>正誤率：<span id="accuracy">0</span>%</h3>
+            <h3>スコア：<span id="score">0</span></h3>
+            <div id="gaugeBar">
+                <div id="gauge"></div>
+            </div>
+            <h3>リアルタイム速度：<span id="typeSpeed">0</span>回/秒</h3>
+            <h3>SKPM：<span id="totalTypeSpeed">0</span></h3>
+            <h2 id="lastRecords" class="greenyellow"></h2>
+            <h3 id="lastRecord_score"></h3>
+            <h3 id="lastRecord_correct"></h3>
+            <h3 id="lastRecord_wrong"></h3>
+            <h3 id="lastRecord_accuracy"></h3>
+            <input type="checkbox" id="toggle">読み仮名を表示する
+        </div>
+
+        <div id="board3">
+            <h3 class="setting">Settings</h3>
+            <div class="difficultyMenu"><h4>難易度</h4>
+                <input type="radio" name="difficulty" value="Easy">Easy
+                <input type="radio" name="difficulty" value="Normal" checked>Normal
+                <input type="radio" name="difficulty" value="Hard">Hard
+                <input type="radio" name="difficulty" value="Impossible">Impossible
+            </div>
+            <div class="fontMenu"><h4>フォント</h4>
+                <input type="radio" name="fontType" value="Mochi">MochiyPopOne
+                <input type="radio" name="fontType" value="Dot" checked>DotGothic16
+                <input type="radio" name="fontType" value="Yusei">YuseiMagic
+                <input type="radio" name="fontType" value="Rockn">RocknRollOne
+            </div>
+            <div class="themaMenu"><h4>テーマ</h4>
+                <input type="radio" name="aboutThema" value="dark" checked>dark
+                <input type="radio" name="aboutThema" value="Japanese_modern">Japanese_modern
+                <input type="radio" name="aboutThema" value="gradation">gradation
+            </div>
+            <div class="type_soundsMenu"><h4>タイプ音</h4>
+                <input type="radio" name="type_sounds" value="normal" checked>normal
+                <input type="radio" name="type_sounds" value="light">light
+                <input type="radio" name="type_sounds" value="comedy">comedy
+                <input type="radio" name="type_sounds" value="off">off
+            </div>
+        </div>
+
+        <div id="board4">
+            <h3>Add My Questions</h3>
+            <h5>※左は漢字あり、右は平仮名のみで入力</h5>
+            <input id="reflectQuestion" type="text" autocomplete="off">
+            <input id="reflectKana" type="text" autocomplete="off">
+            <button id="submitBtn1">追加</button>
+        </div>
+    </main>
+
+    <footer>
+        <h5>created by <span id="Shiosan">Shio-san</span></h5>
+    </footer>
+
+    <script src="./main_engine.js"></script>
+</body>
+</html>
