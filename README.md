@@ -4,7 +4,8 @@ salTypingは、個人で作った日本語のタイピングゲームです。
 
 # 【遊び方】
 index.htmlファイルをブラウザで開くか、
-https://sugar808.github.io/salTyping/にアクセスすると遊べます。
+https://sugar808.github.io/salTyping/
+にアクセスすると遊べます。
 
 spaceキーを押下するとタイマーが起動し、問題が表示されます。
 そのままローマ字入力をすると問題が解けます。
