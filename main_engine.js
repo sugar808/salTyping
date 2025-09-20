@@ -192,6 +192,7 @@ const SE = [
     new Audio('./SE/宝箱を開ける.mp3'),
     new Audio('./SE/決定ボタンを押す43.mp3'),
     new Audio('./SE/決定ボタンを押す14.mp3'),
+    new Audio('./SE/決定ボタンを押す10.mp3'),
 ];
 const Achievements = [
     
@@ -228,6 +229,7 @@ const difficulty = document.querySelectorAll('input[name="difficulty"]');
 const aboutThema = document.querySelectorAll('input[name="aboutThema"]');
 const fontType = document.querySelectorAll('input[name="fontType"');
 const type_sounds = document.querySelectorAll('input[name="type_sounds"');
+const timeRange = document.getElementById('timeRange');
 
 // board4
 const reflectQuestion = document.getElementById('reflectQuestion');
@@ -269,7 +271,7 @@ let end = false;
 let start_time = 0;
 let end_time = 0;
 let random = 0;
-let timeIndex = 60;
+let timeIndex = 0;
 let culResult = 0;
 let enteredIndex = 0;
 let correctBuffer = 0;
@@ -424,6 +426,11 @@ type_sounds.forEach(sound_type => {
         }
     });
 });
+timeRange.addEventListener('input', () => {
+    document.getElementById('valueTime').innerText = String(timeRange.value);
+
+});
+
 
 toggle.addEventListener('change', () => {
     if(!KanaArea.textContent) {
@@ -451,9 +458,11 @@ submitBtn1.addEventListener('click', () => {
 
         reflectQuestion.classList.remove('notFilledIn');
         reflectQuestion.placeholder = '';
+        reflectQuestion.value = '';
 
         reflectKana.classList.remove('notFilledIn');
         reflectKana.placeholder = '';
+        reflectKana.value = '';
 
     } else if(!reflectQuestion.value && !reflectKana.value) {
         reflectQuestion.classList.add('notFilledIn');
@@ -504,6 +513,7 @@ document.addEventListener('keydown', (e) => {
         correctBuffer = 0;
         correctBuffer2 = 0;
         wrongBuffer = 0;
+        timeIndex = timeRange.value;
         if(impossible) {
             create = false;
             questionSteps = 43;
@@ -559,7 +569,7 @@ document.addEventListener('keydown', (e) => {
 
 const setWord = () => {
     start_time = performance.now();
-    console.log(create);
+    if(!start) timeIndex = timeRange.value;
     start = true;
     if(questionSteps === 7 || questionSteps === 14 || questionSteps === 21 || questionSteps === 28 || questionSteps === 35 || questionSteps === 42 || questionSteps === 49) {
         SE[8].currentTime = 0;
@@ -738,7 +748,9 @@ const timer = () => {
 
         if(reflectTime.textContent == '残り時間：0秒') {
             clearInterval(setTime);
-            timeIndex = 60;
+            SE[10].currentTime = 0;
+            SE[10].volume = 0.7;
+            SE[10].play();
             calSKPM();
 
             start = false;
@@ -908,7 +920,7 @@ const wrongCal = () => {
     accuracy.innerText = culResult.toFixed(1);
 };
 const calSKPM = () => {
-    SKPM = ((correctBuffer2 / 5 / (timeIndex / 60) - wrongBuffer) * 2).toFixed(1);
+    SKPM = ((correctBuffer2 / 5 / (timeRange.value / 60) - wrongBuffer) * 2).toFixed(1);
 
 };
 const liveCal = () => {
