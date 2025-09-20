@@ -65,13 +65,16 @@
                 <input class="btn" type="radio" name="type_sounds" value="comedy">comedy
                 <input class="btn" type="radio" name="type_sounds" value="off">off
             </div>
+
+            <div><h4>現在の秒数は<span id="valueTime">60</span>秒です</h4>
+                <input id="timeRange" type="range" min="1" max="180" step="1" value="60">
+            </div>
         </div>
 
         <div id="board4">
             <h3>Add My Questions</h3>
-            <h5>※左は漢字あり、右は平仮名のみで入力</h5>
-            <input id="reflectQuestion" type="text" autocomplete="off">
-            <input id="reflectKana" type="text" autocomplete="off">
+            <input id="reflectQuestion" type="text" autocomplete="off" placeholder="※漢字を含む">
+            <input id="reflectKana" type="text" autocomplete="off" placeholder="※平仮名のみ">
             <button id="submitBtn1">追加</button>
         </div>
     </main>
