@@ -166,6 +166,9 @@ fonts
         border-radius: 50px;
         transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
     }
+    #gaugeBar {
+        display: inline-block;
+    }
 }
 @media screen and (min-width: 601px) and (max-width: 1024px) {
     main {
