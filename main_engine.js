@@ -51,6 +51,8 @@ const romanMap = {
 
     'ぴゃ': 'pya', 'ぴぃ': 'pyi', 'ぴゅ': 'pyu', 'ぴぇ': 'pye', 'ぴょ': 'pyo',
 
+    'ゔぁ': 'va', 'ゔぃ': 'vi', 'ゔ': 'vu', 'ゔぇ': 've', 'ゔぉ': 'vo',
+
     'ー': '-', '、': ',', '。': '.', '？': '?', '！': '!',
 
     '1': '1', '2': '2', '3': '3', '4': '4', '5': '5',
@@ -109,6 +111,8 @@ const romanMap2 = {
     'びゃ': 'bya', 'びぃ': 'byi', 'びゅ': 'byu', 'びぇ': 'bye', 'びょ': 'byo',
 
     'ぴゃ': 'pya', 'ぴぃ': 'pyi', 'ぴゅ': 'pyu', 'ぴぇ': 'pye', 'ぴょ': 'pyo',
+
+    'ゔぁ': 'va', 'ゔぃ': 'vi', 'ゔ': 'vu', 'ゔぇ': 've', 'ゔぉ': 'vo',
 
     'ー': '-', '、': ',', '。': '.', '？': '?', '！': '!',
 
@@ -169,6 +173,8 @@ const romanMap3 = {
 
     'ぴゃ': 'pya', 'ぴぃ': 'pyi', 'ぴゅ': 'pyu', 'ぴぇ': 'pye', 'ぴょ': 'pyo',
 
+    'ゔぁ': 'va', 'ゔぃ': 'vi', 'ゔ': 'vu', 'ゔぇ': 've', 'ゔぉ': 'vo',
+
     'ー': '-', '、': ',', '。': '.', '？': '?', '！': '!',
 
     '1': '1', '2': '2', '3': '3', '4': '4', '5': '5',
@@ -187,129 +193,6 @@ const SE = [
     new Audio('./SE/決定ボタンを押す43.mp3'),
     new Audio('./SE/決定ボタンを押す14.mp3'),
 ];
-const words2 = {
-    '米': 'こめ',
-    '味噌': 'みそ',
-    '糠': 'ぬか',
-    'パン': 'ぱん',
-    '寿司': 'すし',
-    '針': 'はり',
-    '街': 'まち',
-    '餅': 'もち',
-    '鉢': 'はち',
-    '御意': 'ぎょい',
-    'ネジ': 'ねじ',
-    '点': 'てん',
-    '古紙': 'こし',
-    '鉄': 'てつ',
-    '銅': 'どう',
-    '塩': 'しお',
-    'グミ': 'ぐみ',
-    '梨': 'なし',
-};
-const words3 = {
-    'よもぎ': 'よもぎ',
-    'あんこ': 'あんこ',
-    'スズキ': 'すずき',
-    '単語': 'たんご',
-    '襖': 'ふすま',
-    '画面': 'がめん',
-    'お面': 'おめん',
-    '樹液': 'じゅえき',
-    '麩菓子': 'ふがし',
-    'ミーム': 'みーむ',
-    '母音': 'ぼいん',
-    '子音': 'しいん',
-    'ソルト': 'そると',
-    'パンダ': 'ぱんだ',
-    'ニッパ': 'にっぱ',
-    'レット': 'れっと',
-};
-const words4 = {
-    '花札': 'はなふだ',
-    'ハンドル': 'はんどる',
-    'バンドル': 'ばんどる',
-    'キャンドル': 'きゃんどる',
-    '加古川': 'かこがわ',
-    'バス停': 'ばすてい',
-    '自転車': 'じてんしゃ',
-    '青空': 'あおぞら',
-    'スカンク': 'すかんく',
-    'つんざく': 'つんざく',
-    'サックス': 'さっくす',
-    'コーヒー': 'こーひー',
-    '行灯': 'あんどん',
-    'シイタケ': 'しいたけ',
-    '能面': 'のうめん',
-    '三脚': 'さんきゃく',
-    'マジシャン': 'まじしゃん',
-    '煎餅': 'せんべい',
-    '寸胴': 'ずんどう',
-    '閃光': 'せんこう',
-    '線香': 'せんこう',
-    'コンフィグ': 'こんふぃぐ',
-    '額縁': 'がくぶち',
-    '逆光': 'ぎゃっこう',
-    '促音': 'そくおん',
-    '拗音': 'ようおん',
-    'カフェオレ': 'かふぇおれ',
-    'オプション': 'おぷしょん',
-    '関数': 'かんすう',
-    'メソッド': 'めそっど',
-    '変数': 'へんすう',
-    'コンスト': 'こんすと',
-    '玄米': 'げんまい',
-    'コマンド': 'こまんど',
-};
-const words5 = {
-    'ピアニスト': 'ぴあにすと',
-    'アンブレラ': 'あんぶれら',
-    '接頭辞': 'せっとうじ',
-    '観光地': 'かんこうち',
-    'メルボルン': 'めるぼるん',
-    'タイピング': 'たいぴんぐ',
-    'レスポンス': 'れすぽんす',
-    'リクエスト': 'りくえすと',
-    '募集中': 'ぼしゅうちゅう',
-    'かき氷': 'かきごおり',
-    '散髪屋': 'さんぱつや',
-    'キーボード': 'きーぼーど',
-    'コイントス': 'こいんとす',
-    'ニューイヤー': 'にゅーいやー',
-    '電子機器': 'でんしきき',
-};
-const words6 = {
-    'アンサンブル': 'あんさんぶる',
-    'ポップコーン': 'ぽっぷこーん',
-    'インストール': 'いんすとーる',
-    '回覧板': 'かいらんばん',
-    '素っ頓狂': 'すっとんきょう',
-    '天変地異': 'てんぺんちい',
-    'セッティングス': 'せってぃんぐす',
-    'コンシューマー': 'こんしゅーまー',
-    'ユーフォニアム': 'ゆーふぉにあむ',
-    '電子レンジ': 'でんしれんじ',
-    '大海原': 'おおうなばら',
-};
-const words7 = {
-    '玄米法師': 'げんまいほうし',
-    '観光名所': 'かんこうめいしょ',
-    '追加オプション': 'ついかおぷしょん',
-    '二人三脚': 'ににんさんきゃく',
-    'アスキーアート': 'あすきーあーと',
-    'ヘーゼルナッツ': 'へーぜるなっつ',
-    '過去の過ち': 'かこのあやまち',
-}
-const wordsNoLimit = {
-    'これが私が初めて完成させたタイピングゲームです。': 'これがわたしがはじめてかんせいさせたたいぴんぐげーむです。',
-    '今日も今日とてタイピング': 'きょうもきょうとてたいぴんぐ',
-    'それがどうしてそうなるんだよ': 'それがどうしてそうなるんだよ',
-    'んーよう分からん': 'んーようわからん',
-    'プログラミングは私の趣味です。': 'ぷろぐらみんぐはわたしのしゅみです。',
-    '有線のイヤフォンか無線のイヤフォンか': 'ゆうせんのいやふぉんかむせんのいやふぉんか',
-    '私のコレクションはキーボードです。': 'わたしのこれくしょんはきーぼーどです。',
-    '冬は手が乾燥する。': 'ふゆはてがかんそうする。',
-};
 const Achievements = [
     
 ];
@@ -355,10 +238,11 @@ const submitBtn1 = document.getElementById('submitBtn1');
 const pressedKey = document.getElementById('pressedKey');
 
 const regex1 = /([ゃゅょぁぃぅぇぉ])/;
-const regex2 = /([っ])([かきくけこさしすせそたちつてとはひふへほまみむめもらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽ])/;
-const regex3 = /([っ])(ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ)/;
+const regex2 = /([っ])([かきくけこさしすせそたちつてとはひふへほまみむめもらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ])/;
+const regex3 = /([っ])(ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ|ゔぁ|ゔぃ|ゔぇ|ゔぉ)/;
 const regex4 = /([ん])([かきくけこさしすせそたちつてとはひふへほまみむめもらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽー1234567890?!])/;
-const regex5 = /([ん])(きゃ|きぃ|きゅ|きぇ|きょ|ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|ふぁ|ふぃ|ふぇ|ふぉ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ)/;
+const regex5 = /([ん])(きゃ|きぃ|きゅ|きぇ|きょ|ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|ふぁ|ふぃ|ふぇ|ふぉ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ|ゔぁ|ゔぃ|ゔぇ|ゔぉ)/;
+const regex6 = /([bcdfghjklmnpqrstvwxyz])/;
 
 const quesBuffer = [];
 const pickKanji = [];
@@ -385,7 +269,7 @@ let end = false;
 let start_time = 0;
 let end_time = 0;
 let random = 0;
-let timeIndex = 50;
+let timeIndex = 60;
 let culResult = 0;
 let enteredIndex = 0;
 let correctBuffer = 0;
@@ -621,8 +505,8 @@ document.addEventListener('keydown', (e) => {
         correctBuffer2 = 0;
         wrongBuffer = 0;
         if(impossible) {
-            create = true;
-            questionSteps = 42;
+            create = false;
+            questionSteps = 43;
 
         } else if(hard) {
             create = true;
@@ -675,6 +559,7 @@ document.addEventListener('keydown', (e) => {
 
 const setWord = () => {
     start_time = performance.now();
+    console.log(create);
     start = true;
     if(questionSteps === 7 || questionSteps === 14 || questionSteps === 21 || questionSteps === 28 || questionSteps === 35 || questionSteps === 42 || questionSteps === 49) {
         SE[8].currentTime = 0;
@@ -764,6 +649,7 @@ const setWord = () => {
         selectedRandom.length = 0;
 
     }
+    console.log(pickKanji);
     // 乱数を生成
     random = Math.floor(Math.random() * pickKanji.length);
 
@@ -852,11 +738,10 @@ const timer = () => {
 
         if(reflectTime.textContent == '残り時間：0秒') {
             clearInterval(setTime);
-            timeIndex = 50;
+            timeIndex = 60;
             calSKPM();
 
             start = false;
-            create = false;
             end = true;
             
             caret.innerText = '>>end --Press Escape';
@@ -906,22 +791,7 @@ const judge = () => {
         }
 
         correctCal();
-        if(normal) {
-            SE[0].currentTime = 0;
-            SE[0].volume = 0.7;
-            SE[0].play();
-
-        } else if(light) {
-            SE[4].currentTime = 0;
-            SE[4].volume = 0.7;
-            SE[4].play();
-
-        } else if(comedy) {
-            SE[5].currentTime = 0;
-            SE[5].volume = 0.5;
-            SE[5].play();
-
-        }
+        ringCorrectSE();
 
         romanBuffer = '';
         if(correctSpell.textContent) {
@@ -943,22 +813,7 @@ const judge = () => {
         }
 
         correctCal();
-        if(normal) {
-            SE[0].currentTime = 0;
-            SE[0].volume = 0.7;
-            SE[0].play();
-
-        } else if(light) {
-            SE[4].currentTime = 0;
-            SE[4].volume = 0.7;
-            SE[4].play();
-
-        } else if(comedy) {
-            SE[5].currentTime = 0;
-            SE[5].volume = 0.5;
-            SE[5].play();
-
-        }
+        ringCorrectSE();
 
         romanBuffer = '';
         if(correctSpell.textContent) {
@@ -981,22 +836,7 @@ const judge = () => {
         }
 
         correctCal();
-        if(normal) {
-            SE[0].currentTime = 0;
-            SE[0].volume = 0.7;
-            SE[0].play();
-
-        } else if(light) {
-            SE[4].currentTime = 0;
-            SE[4].volume = 0.7;
-            SE[4].play();
-
-        } else if(comedy) {
-            SE[5].currentTime = 0;
-            SE[5].volume = 0.5;
-            SE[5].play();
-
-        }
+        ringCorrectSE();
 
         romanBuffer = '';
         if(correctSpell.textContent) {
@@ -1089,6 +929,26 @@ const liveCal = () => {
     }, 40);
 };
 liveCal();
+
+const ringCorrectSE = () => {
+    if(normal) {
+        SE[0].currentTime = 0;
+        SE[0].volume = 0.7;
+        SE[0].play();
+
+    } else if(light) {
+        SE[4].currentTime = 0;
+        SE[4].volume = 0.7;
+        SE[4].play();
+
+    } else if(comedy) {
+        SE[5].currentTime = 0;
+        SE[5].volume = 0.5;
+        SE[5].play();
+
+    }
+
+};
 
 const judgeCons = () => {
     if(regex1.test(quesBuffer[0] + quesBuffer[1])) {
