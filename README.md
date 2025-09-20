@@ -1,4 +1,4 @@
-![サムネイル](<img width="2552" height="1314" alt="{F3D47210-D1E2-4A45-9CFD-367276A42219}" src="https://github.com/user-attachments/assets/5adac6e2-b335-4619-a98e-b1c65831abc2" />)
+![サムネイル](F3D47210-D1E2-4A45-9CFD-367276A42219" src="https://github.com/user-attachments/assets/5adac6e2-b335-4619-a98e-b1c65831abc2")
 
 # 【salTypingについて】
 salTypingは、個人で作っている日本語のタイピングゲームです。
