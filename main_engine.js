@@ -750,7 +750,6 @@ const correctCal = () => {
     } else if(en) {
         correctText = lang[langProperties[3]];
         accuracyText = lang[langProperties[5]];
-        timesUnit = lang[langProperties[14]];
 
     }
 
@@ -774,13 +773,12 @@ const wrongCal = () => {
     } else if(en) {
         wrongText = lang[langProperties[4]];
         accuracyText = lang[langProperties[5]];
-        timesUnit = lang[langProperties[14]];
 
     }
 
     wrongBuffer++;
 
-    wrong.innerText = wrongText + String(wrongBuffer) + timesUnit;
+    wrong.innerText = wrongText + String(wrongBuffer);
         
     culResult = Number(correctBuffer2) / enteredIndex * 100;
 
