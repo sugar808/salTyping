@@ -22,6 +22,7 @@
             <h3>リアルタイム速度：<span id="typeSpeed"></span>回/秒</h3>
             <h3>最高速度：<span id="maxSpeed"></span>回/秒</h3>
             <h2 id="reflectTime">残り時間：</h2>
+            <h3 id="combo"></h3>
             <h1 id="q">Spaceキーを押してください</h1>
             <h2 id="KanaArea"></h2>
             <h3><span id="reflectRoman">Please Press Space</span><span id="correctSpell" class="colored"></span><span id="caret"></span></h3>
@@ -38,6 +39,7 @@
             <h3 id="lastRecord_correct"></h3>
             <h3 id="lastRecord_wrong"></h3>
             <h3 id="lastRecord_accuracy"></h3>
+            <h3 id="lastRecord_SKPM"></h3>
             <input type="checkbox" id="toggle">読み仮名を表示する
         </div>
 
@@ -65,6 +67,10 @@
                 <input class="btn" type="radio" name="type_sounds" value="light">light
                 <input class="btn" type="radio" name="type_sounds" value="comedy">comedy
                 <input class="btn" type="radio" name="type_sounds" value="off">off
+            </div>
+
+            <div>
+                <input type="checkbox" id="music_game_switch">音ゲーにする
             </div>
 
             <div><h4>Language</h4>
