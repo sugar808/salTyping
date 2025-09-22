@@ -6,6 +6,17 @@ html {
 h4 {
     margin-top: 5px;
 }
+button {
+    background-color: #232938;
+    color: white;
+    border: 2px solid white;
+    transition: all .2s ease-in-out;
+}
+button:hover {
+    background-color: white;
+    color: #232938;
+    border: 2px solid #232938;
+}
 footer {
     position: absolute;
     top: 0;
