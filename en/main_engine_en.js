@@ -311,19 +311,19 @@ submitBtn1.addEventListener('click', () => {
 });
 document.addEventListener('keydown', (e) => {
     // タイピングゲーム開始のイベント
+    if(e.key !== 'Shift' && start) {
+        romanBuffer += e.key;
+        typeBuffer++;
+        enteredIndex++;
+
+        judge();
+    }
     if(e.key === ' ' && !start && !end) {
         // start_time = performance.now();
         e.preventDefault();
         reflectRoman.innerText = '';
         setWord();
         timer();
-    }
-    if(e.key !== ' ' && e.key !== 'Shift' && start) {
-        romanBuffer += e.key;
-        typeBuffer++;
-        enteredIndex++;
-
-        judge();
     }
     if(e.key === 'Escape' && end) {
         totalRoman = '';
