@@ -19,19 +19,19 @@
             <div id="gaugeBar">
                 <div id="gauge"></div>
             </div>
-            <h3 id="typeSpeed"></h3>
-            <h3 id="maxSpeed"></h3>
+            <h3>リアルタイム速度：<span id="typeSpeed"></span>回/秒</h3>
+            <h3>最高速度：<span id="maxSpeed"></span>回/秒</h3>
             <h2 id="reflectTime">残り時間：</h2>
             <h1 id="q">Spaceキーを押してください</h1>
             <h2 id="KanaArea"></h2>
-            <h3><span id="reflectRoman">Please press Space</span><span id="correctSpell" class="colored"></span><span id="caret"></span></h3>
+            <h3><span id="reflectRoman">Please Press Space</span><span id="correctSpell" class="colored"></span><span id="caret"></span></h3>
         </div>
 
         <div id="board2">
             <h3>Level：<span id="level"></span></h3>
-            <h3 id="correct"></h3>
-            <h3 id="wrong"></h3>
-            <h3 id="accuracy"></h3>
+            <h3>正打：<span id="correct">0</span>回</h3>
+            <h3>誤打：<span id="wrong">0</span>回</h3>
+            <h3>正誤率：<span id="accuracy">0</span>%</h3>
             <h3>SKPM：<span id="totalTypeSpeed">0</span></h3>
             <h2 id="lastRecords" class="greenyellow"></h2>
             <h3 id="lastRecord_score"></h3>
@@ -67,9 +67,8 @@
                 <input class="btn" type="radio" name="type_sounds" value="off">off
             </div>
 
-            <div><h4>言語設定</h4>
-                <input type="radio" name="language" value="Japanese" checked>日本語
-                <input type="radio" name="language" value="English">English
+            <div><h4>Language</h4>
+                <button onclick="location.href = './en/en.html'">Show English Page</button>
             </div>
 
             <div><h4>現在の秒数は<span id="valueTime">60</span>秒です</h4>
@@ -78,7 +77,7 @@
         </div>
 
         <div id="board4">
-            <h3>Add My Questions</h3>
+            <h3>問題を追加する</h3>
             <input id="reflectQuestion" type="text" autocomplete="off" placeholder="※漢字を含む">
             <input id="reflectKana" type="text" autocomplete="off" placeholder="※平仮名のみの二字以上">
             <button id="submitBtn1">追加</button>
@@ -91,7 +90,6 @@
     
 
     <script src="./data/romanMaps.js"></script>
-    <script src="./data/lang.js"></script>
     <script src="./data/questions.js"></script>
     <script src="./main_engine.js"></script>
 </body>
