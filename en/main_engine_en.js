@@ -318,7 +318,7 @@ document.addEventListener('keydown', (e) => {
         setWord();
         timer();
     }
-    if(e.key !== ' ' & start) {
+    if(e.key !== ' ' && e.key !== 'Shift' && start) {
         romanBuffer += e.key;
         typeBuffer++;
         enteredIndex++;
