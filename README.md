@@ -1,7 +1,8 @@
 ![サムネイル](https://github.com/user-attachments/assets/5adac6e2-b335-4619-a98e-b1c65831abc2)
 
 # 【About salTyping】
-salTyping is a Japanese typing game created by an individual.
+salTyping is basically a Japanese typing game made by an individual.
+I add features based on other people's feedback and opinions.
 It uses three technologies: HTML, CSS, and JavaScript.
 
 # 【How to Play】
@@ -30,7 +31,8 @@ but it's difficult to fix, so it will remain untouched for the time being. Sorry
 ---
 
 # 【salTypingについて】
-salTypingは、個人で作っている日本語のタイピングゲームです。
+salTypingは、基本的には個人で作っている日本語のタイピングゲームです。
+人からの感想や意見を基に機能を追加したりしています。
 使われている技術はHTML・CSS・JavaScriptの3つです。
 
 # 【遊び方】
