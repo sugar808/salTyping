@@ -46,7 +46,6 @@ const difficulty = document.querySelectorAll('input[name="difficulty"]');
 const aboutThema = document.querySelectorAll('input[name="aboutThema"]');
 const fontType = document.querySelectorAll('input[name="fontType"');
 const type_sounds = document.querySelectorAll('input[name="type_sounds"');
-const language = document.querySelectorAll('input[name="language"]');
 const timeRange = document.getElementById('timeRange');
 
 // board4
@@ -72,7 +71,6 @@ const record_wrong = [];
 const record_accuracy = [];
 const max_type_time = [];
 const selectedRandom = [];
-const langProperties = Object.keys(lang);
 
 console.log(aboutThema.item(0).value);
 
@@ -85,8 +83,6 @@ let easy = false;
 let normalD = true;
 let hard = false;
 let impossible = false;
-let ja = true;
-let en = false;
 let end = false;
 
 let start_time = 0;
@@ -115,15 +111,6 @@ let expectedValue3 = '';
 let expectedValue4 = '';
 let expectedValue5 = '';
 let expectedValue6 = '';
-
-// texts
-let liveSpeedText = '';
-let maxSpeedText = '';
-let correctText = '';
-let wrongText = '';
-let accuracyText = '';
-let SpeedUnit = '';
-let timesUnit = '';
 
 // 難易度の変更
 difficulty.forEach(diffi => {
@@ -256,19 +243,6 @@ type_sounds.forEach(sound_type => {
         }
     });
 });
-language.forEach(langType => {
-    langType.addEventListener('change', () => {
-        if(langType.value === 'Japanese') {
-            ja = true;
-            en = false;
-
-        } else {
-            ja = false;
-            en = true;
-
-        }
-    });
-});
 timeRange.addEventListener('input', () => {
     document.getElementById('valueTime').innerText = String(timeRange.value);
 
@@ -373,9 +347,9 @@ document.addEventListener('keydown', (e) => {
 
         maxSpeed.innerText = '';
         q.innerText = 'Spaceキーを押してください';
-        correct.innerText = '';
-        wrong.innerText = '';
-        accuracy.innerText = '';
+        correct.innerText = '0';
+        wrong.innerText = '0';
+        accuracy.innerText = '0';
         reflectRoman.innerText = 'Please press Space';
         caret.innerText = '';
         lastRecords.innerText = '';
@@ -742,19 +716,8 @@ const judge = () => {
 };
 
 const correctCal = () => {
-    if(ja) {
-        correctText = langProperties[3];
-        accuracyText = langProperties[5];
-        timesUnit = langProperties[14];
-
-    } else if(en) {
-        correctText = lang[langProperties[3]];
-        accuracyText = lang[langProperties[5]];
-
-    }
-
     correctBuffer2++;
-    correct.innerText = correctText + String(correctBuffer2);
+    correct.innerText = String(correctBuffer2);
     correctBuffer++;
 
     totalRoman += romanBuffer;
@@ -762,27 +725,16 @@ const correctCal = () => {
     culResult = Number(correctBuffer2) / enteredIndex * 100;
 
     reflectRoman.innerText = totalRoman;
-    accuracy.innerText = accuracyText + culResult.toFixed(1) + '%';
+    accuracy.innerText = culResult.toFixed(1);
 };
 const wrongCal = () => {
-    if(ja) {
-        wrongText = langProperties[4];
-        accuracyText = langProperties[5];
-        timesUnit = langProperties[14];
-
-    } else if(en) {
-        wrongText = lang[langProperties[4]];
-        accuracyText = lang[langProperties[5]];
-
-    }
-
     wrongBuffer++;
 
-    wrong.innerText = wrongText + String(wrongBuffer);
+    wrong.innerText = String(wrongBuffer);
         
     culResult = Number(correctBuffer2) / enteredIndex * 100;
 
-    accuracy.innerText = accuracyText + culResult.toFixed(1) + '%';
+    accuracy.innerText = culResult.toFixed(1);
 };
 const calSKPM = () => {
     SKPM = ((correctBuffer2 / 5 / (timeRange.value / 60) - wrongBuffer) * 2).toFixed(1);
@@ -790,29 +742,17 @@ const calSKPM = () => {
 };
 const liveCal = () => {
     cal = setInterval(() => {
-        if(ja) {
-            liveSpeedText = langProperties[0];
-            maxSpeedText = langProperties[2];
-            SpeedUnit = langProperties[1];
-
-        } else if(en) {
-            liveSpeedText = lang[langProperties[0]];
-            maxSpeedText = lang[langProperties[2]];
-            SpeedUnit = lang[langProperties[1]];
-
-        }
-
         end_time = performance.now();
         time = (end_time - start_time) / 1000;
         speed = correctBuffer / time;
         max_type_time.push(speed);
-        typeSpeed.innerText = liveSpeedText + String(speed.toFixed(1)) + SpeedUnit;
+        typeSpeed.innerText = String(speed.toFixed(1));
 
         const max = max_type_time.reduce((acc, cur) => {
             return cur > acc ? cur : acc;
         },max_type_time[0]);
 
-        maxSpeed.innerText = maxSpeedText + String(max.toFixed(1)) + SpeedUnit;
+        maxSpeed.innerText = String(max.toFixed(1));
 
         gauge.style.width = speed * 20 + 'px';
     }, 40);
