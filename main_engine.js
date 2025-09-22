@@ -11,6 +11,9 @@ const SE = [
     new Audio('./SE/決定ボタンを押す14.mp3'),
     new Audio('./SE/決定ボタンを押す10.mp3'),
 ];
+const musics = [
+    new Audio('./musics/ゲームで敵と戦ってる的な曲.mp3'),
+];
 const Achievements = [
     
 ];
@@ -20,6 +23,7 @@ const gauge = document.getElementById('gauge');
 const typeSpeed = document.getElementById('typeSpeed');
 const maxSpeed = document.getElementById('maxSpeed');
 const reflectTime = document.getElementById('reflectTime');
+const combo = document.getElementById('combo');
 const q = document.getElementById('q');
 const KanaArea = document.getElementById('KanaArea');
 const reflectRoman = document.getElementById('reflectRoman');
@@ -36,7 +40,9 @@ const lastRecords = document.getElementById('lastRecords');
 const lastRecord_correct = document.getElementById('lastRecord_correct');
 const lastRecord_wrong = document.getElementById('lastRecord_wrong');
 const lastRecord_accuracy = document.getElementById('lastRecord_accuracy');
+const lastRecord_SKPM = document.getElementById('lastRecord_SKPM');
 const toggle = document.getElementById('toggle');
+const music_game_switch = document.getElementById('music_game_switch');
 
 // footer
 const Shiosan = document.getElementById('Shiosan');
@@ -69,6 +75,7 @@ const pickKana = [];
 const record_correct = [];
 const record_wrong = [];
 const record_accuracy = [];
+const record_SKPM = [];
 const max_type_time = [];
 const selectedRandom = [];
 
@@ -84,6 +91,7 @@ let normalD = true;
 let hard = false;
 let impossible = false;
 let end = false;
+let music_game = false;
 
 let start_time = 0;
 let end_time = 0;
@@ -258,6 +266,18 @@ toggle.addEventListener('change', () => {
 
     }
 });
+music_game_switch.addEventListener('change', () => {
+    if(!combo.textContent) {
+        combo.innerText = 'コンボ：';
+        music_game = true;
+
+    } else if(combo.textContent) {
+        combo.textContent = '';
+        music_game = false;
+
+    }
+
+})
 Shiosan.addEventListener('click', () => {
     if(Num > 29) {
         SE[6].currentTime = 0;
@@ -311,6 +331,7 @@ document.addEventListener('keydown', (e) => {
         // start_time = performance.now();
         e.preventDefault();
         reflectRoman.innerText = '';
+        startGame();
         setWord();
         timer();
     }
@@ -579,22 +600,22 @@ const timer = () => {
 
             record_correct.push(correctBuffer2);
             record_wrong.push(wrongBuffer);
-            record_accuracy.push(SKPM);
+            record_accuracy.push(culResult);
+            record_SKPM.push(SKPM)
             console.log(record_accuracy);
 
-            if(record_correct[1]) {
-                lastRecords.innerText = '>>前回の記録';
-                lastRecord_correct.innerText = '正：' + record_correct[0];
-                lastRecord_wrong.innerText = '誤：' + record_wrong[0];
-                lastRecord_accuracy.innerText = 'SKPM：' + record_accuracy[0];
- 
-                record_correct.shift();
-                record_wrong.shift();
-                record_accuracy.shift();
+        }
+        if(record_correct[1]) {
+            lastRecords.innerText = '>>前回の記録';
+            lastRecord_correct.innerText = '正：' + record_correct[0] + '回';
+            lastRecord_wrong.innerText = '誤：' + record_wrong[0] + '回';
+            lastRecord_accuracy.innerText = '正誤率：' + record_accuracy[0].toFixed(1) + '%';
+            lastRecord_SKPM.innerText = 'SKPM：' + record_SKPM[0];
 
-            }
-            // BGM[0].currentTime = 0;
-            // BGM[0].pause();
+            record_correct.shift();
+            record_wrong.shift();
+            record_accuracy.shift();
+            record_SKPM.shift();
 
         }
     }, 1000);
@@ -859,4 +880,20 @@ const judgeCons = () => {
         quesBuffer.splice(0, 2, quesBuffer[0] + quesBuffer[1]);
 
     }
+};
+
+const startGame = () => {
+    if(!music_game) return;
+    if(music_game) return;
+    let timeStart = 0;
+
+    musics[0].currentTime = 0;
+    musics[0].volume = 0.7;
+    musics[0].play();
+
+    if(!musics[0].paused) {
+        timeStart = performance.now();
+
+    }
+
 };
