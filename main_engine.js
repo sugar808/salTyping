@@ -15,7 +15,6 @@ const musics = [
     new Audio('./musics/ゲームで敵と戦ってる的な曲.mp3'),
 ];
 const Achievements = [
-    
 ];
 
 // board1
@@ -31,6 +30,18 @@ const correctSpell = document.getElementById('correctSpell');
 const caret = document.getElementById('caret');
 
 // keyboard
+const n1 = document.getElementById('n1');
+const n2 = document.getElementById('n2');
+const n3 = document.getElementById('n3');
+const n4 = document.getElementById('n4');
+const n5 = document.getElementById('n5');
+const n6 = document.getElementById('n6');
+const n7 = document.getElementById('n7');
+const n8 = document.getElementById('n8');
+const n9 = document.getElementById('n9');
+const n0 = document.getElementById('n0');
+const mi = document.getElementById('mi');
+const iq = document.getElementById('iq');
 const Q = document.getElementById('Q');
 const W = document.getElementById('W');
 const E = document.getElementById('E');
@@ -41,6 +52,7 @@ const U = document.getElementById('U');
 const I = document.getElementById('I');
 const O = document.getElementById('O');
 const P = document.getElementById('P');
+const par = document.getElementById('par');
 const A = document.getElementById('A');
 const S = document.getElementById('S');
 const D = document.getElementById('D');
@@ -90,9 +102,6 @@ const timeRange = document.getElementById('timeRange');
 const reflectQuestion = document.getElementById('reflectQuestion');
 const reflectKana = document.getElementById('reflectKana');
 const submitBtn1 = document.getElementById('submitBtn1');
-
-// board5
-const pressedKey = document.getElementById('pressedKey');
 
 const regex1 = /([ゃゅょぁぃぅぇぉ])/;
 const regex2 = /([っ])([かきくけこさしすせそたちつてとはひふへほまみむめもらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ])/;
@@ -356,13 +365,26 @@ submitBtn1.addEventListener('click', () => {
 });
 document.addEventListener('keydown', (e) => {
     // タイピングゲーム開始のイベント
-    if(e.key !== 'Shift' && start) {
+    if(e.key !== 'Shift' && e.key !== 'S' && start) {
         romanBuffer += e.key;
         typeBuffer++;
         enteredIndex++;
 
         judge();
     }
+    if(e.key === '1') n1.classList.add('pressed');
+    if(e.key === '2') n2.classList.add('pressed');
+    if(e.key === '3') n3.classList.add('pressed');
+    if(e.key === '4') n4.classList.add('pressed');
+    if(e.key === '5') n5.classList.add('pressed');
+    if(e.key === '6') n6.classList.add('pressed');
+    if(e.key === '7') n7.classList.add('pressed');
+    if(e.key === '8') n8.classList.add('pressed');
+    if(e.key === '9') n9.classList.add('pressed');
+    if(e.key === '0') n0.classList.add('pressed');
+    if(e.key === '-') mi.classList.add('pressed');
+    if(e.key === '=') iq.classList.add('pressed');
+
     if(e.key === 'q') Q.classList.add('pressed');
     if(e.key === 'w') W.classList.add('pressed');
     if(e.key === 'e') E.classList.add('pressed');
@@ -373,6 +395,7 @@ document.addEventListener('keydown', (e) => {
     if(e.key === 'i') I.classList.add('pressed');
     if(e.key === 'o') O.classList.add('pressed');
     if(e.key === 'p') P.classList.add('pressed');
+    if(e.key === '{') par.classList.add('pressed');
     
     if(e.key === 'a') A.classList.add('pressed');
     if(e.key === 's') S.classList.add('pressed');
@@ -403,6 +426,16 @@ document.addEventListener('keydown', (e) => {
         reflectRoman.innerText = '';
         setWord();
         timer();
+    }
+    if(e.key === 'S' && start && !end) {
+        console.log('ok');
+        end = true;
+        start = false;
+        caret.innerText = '>>end --Press Escape';
+        correctSpell.innerText = '';
+        clearInterval(setTime);
+
+
     }
     if(e.key === 'Escape' && end) {
         totalRoman = '';
@@ -440,7 +473,7 @@ document.addEventListener('keydown', (e) => {
         correct.innerText = '0';
         wrong.innerText = '0';
         accuracy.innerText = '0';
-        reflectRoman.innerText = 'Please press Space';
+        reflectRoman.innerText = 'Shift + s でリセット';
         caret.innerText = '';
         lastRecords.innerText = '';
         lastRecord_correct.innerText = '';
@@ -466,14 +499,22 @@ document.addEventListener('keydown', (e) => {
 
         end = false;
     }
-    pressedKey.innerText = e.key;
-    if(pressedKey.textContent === ' ') {
-        pressedKey.innerText = e.code;
-
-    }
     
 });
 document.addEventListener('keyup', (e) => {
+    if(e.key === '1') n1.classList.remove('pressed');
+    if(e.key === '2') n2.classList.remove('pressed');
+    if(e.key === '3') n3.classList.remove('pressed');
+    if(e.key === '4') n4.classList.remove('pressed');
+    if(e.key === '5') n5.classList.remove('pressed');
+    if(e.key === '6') n6.classList.remove('pressed');
+    if(e.key === '7') n7.classList.remove('pressed');
+    if(e.key === '8') n8.classList.remove('pressed');
+    if(e.key === '9') n9.classList.remove('pressed');
+    if(e.key === '0') n0.classList.remove('pressed');
+    if(e.key === '-') mi.classList.remove('pressed');
+    if(e.key === '=') iq.classList.remove('pressed');
+
     if(e.key === 'q') Q.classList.remove('pressed');
     if(e.key === 'w') W.classList.remove('pressed');
     if(e.key === 'e') E.classList.remove('pressed');
@@ -484,6 +525,8 @@ document.addEventListener('keyup', (e) => {
     if(e.key === 'i') I.classList.remove('pressed');
     if(e.key === 'o') O.classList.remove('pressed');
     if(e.key === 'p') P.classList.remove('pressed');
+    if(e.key === '{') par.classList.remove('pressed');
+    if(e.key === '[') par.classList.remove('pressed');
     
     if(e.key === 'a') A.classList.remove('pressed');
     if(e.key === 's') S.classList.remove('pressed');
