@@ -101,21 +101,25 @@ footer {
 keyboard
 */
 #keyboard {
+    text-align: center;
     margin: 0 auto;
-    width: 10rem;
+    width: 16rem;
     padding: 2px;
     margin-bottom: 2rem;
-    border: 2px solid white;
+    border: 2px solid rgb(190, 190, 190);
+    background-color: #2f2f2f;
     transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
 }
 .cap {
     border: 1px solid white;
-    padding: 2px;
+    padding: 3px;
+    display: inline-block;
+    margin: 0 auto;
 }
 .spaceCap {
     border: 1px solid white;
-    margin-top: 2px;
-    padding-left: 40px;
+    margin-top: 4px;
+    padding-left: 4rem;
 }
 .pressed {
     color: #95732a;
