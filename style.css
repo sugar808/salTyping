@@ -139,6 +139,16 @@ fonts
     font-family: 'Yusei';
 }
 
+/*
+form
+*/
+#reflectQuestion {
+    width: 10rem;
+}
+#reflectKana {
+    width: 14rem;
+}
+
 
 .blink2 {
     position: relative;
