@@ -679,12 +679,6 @@ const setWord = () => {
     if(easy) {
         questionSteps = 0;
 
-    } else if(hard) {
-        questionSteps = 22;
-
-    } else if(impossible) {
-        questionSteps = 42;
-
     } else {
         questionSteps++;
 
@@ -699,12 +693,9 @@ const setWord = () => {
         KanaArea.innerText = selectedWord;
 
     }
-    if(!easy && !hard && !impossible) {
-        console.log('koko');
-        pickKanji.splice(random, 1);
-        pickKana.splice(random, 1);
-
-    }
+    console.log('koko');
+    pickKanji.splice(random, 1);
+    pickKana.splice(random, 1);
 
     if(pickKanji.length === 0) {
         console.log('end');
