@@ -98,6 +98,34 @@ footer {
 }
 
 /*
+keyboard
+*/
+#keyboard {
+    margin: 0 auto;
+    width: 10rem;
+    padding: 2px;
+    margin-bottom: 2rem;
+    border: 2px solid white;
+    transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
+}
+.cap {
+    border: 1px solid white;
+    padding: 2px;
+}
+.spaceCap {
+    border: 1px solid white;
+    margin-top: 2px;
+    padding-left: 40px;
+}
+.pressed {
+    color: #95732a;
+
+}
+.pressed2 {
+    background-color: #95732a;
+}
+
+/*
 gauge
 */
 #gaugeBar {
