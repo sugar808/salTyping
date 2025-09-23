@@ -1,22 +1,19 @@
 ![サムネイル](https://github.com/user-attachments/assets/5adac6e2-b335-4619-a98e-b1c65831abc2)
 
-# 【About salTyping】
+# About salTyping
 salTyping is basically a Japanese typing game made by an individual.
 I add features based on other people's feedback and opinions.
 It uses three technologies: HTML, CSS, and JavaScript.
 
-# 【How to Play】
-You can play by opening the index.html file in your browser or visiting
+# What you can do
+This typing game allows you to add your own questions.
+And, you can enjoy typing game with it.
+
+![最下部](https://github.com/user-attachments/assets/569abcc9-c6e2-4f8d-a71e-6f28d3edafad)
+
+You can add questions in the section at the bottom.
+Click this link and have fun!
 https://sugar808.github.io/salTyping/
-
-Pressing the spacebar will start the timer and display a question.
-Simply enter romaji to solve the question.
-
-When the timer reaches 0 seconds, input will no longer be accepted and the game will end.
-
-#### Press Escape
-will be displayed, so press the Escape key.
-You will then return to the first screen.
 
 # Bugs and Specifications
 Currently, when there's a consonant after the "n" in config,
@@ -35,19 +32,13 @@ salTypingは、基本的には個人で作っている日本語のタイピン�
 人からの感想や意見を基に機能を追加したりしています。
 使われている技術はHTML・CSS・JavaScriptの3つです。
 
-# 【遊び方】
-index.htmlファイルをブラウザで開くか、
+# 【できること】
+このタイピングゲームでは、自分の問題を追加し出題させることができます。
+
+![最下部](https://github.com/user-attachments/assets/569abcc9-c6e2-4f8d-a71e-6f28d3edafad)
+
+ページ最下部のセクションにて問題を追加できます。このリンクに飛んで遊んでみましょう！
 https://sugar808.github.io/salTyping/
-にアクセスすると遊べます。
-
-spaceキーを押下するとタイマーが起動し、問題が表示されます。
-そのままローマ字入力をすると問題が解けます。
-
-タイマーが0秒になると入力を受け付けなくなり終了します。
-
-#### Press Escape
-と表示されるので、Escapeキーを押下します。すると、
-また最初の画面に戻ります。
 
 # バグや仕様について
 現在、コンフィグのような「ん」の後ろに子音がくる場合は、
