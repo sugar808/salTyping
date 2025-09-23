@@ -42,7 +42,6 @@ const lastRecord_wrong = document.getElementById('lastRecord_wrong');
 const lastRecord_accuracy = document.getElementById('lastRecord_accuracy');
 const lastRecord_SKPM = document.getElementById('lastRecord_SKPM');
 const toggle = document.getElementById('toggle');
-const music_game_switch = document.getElementById('music_game_switch');
 
 // footer
 const Shiosan = document.getElementById('Shiosan');
@@ -52,6 +51,7 @@ const difficulty = document.querySelectorAll('input[name="difficulty"]');
 const aboutThema = document.querySelectorAll('input[name="aboutThema"]');
 const fontType = document.querySelectorAll('input[name="fontType"');
 const type_sounds = document.querySelectorAll('input[name="type_sounds"');
+const game_mode_select = document.querySelectorAll('input[name="game_mode_select"]');
 const timeRange = document.getElementById('timeRange');
 
 // board4
@@ -90,8 +90,9 @@ let easy = false;
 let normalD = true;
 let hard = false;
 let impossible = false;
+let hurryUp = false;
+let none = true;
 let end = false;
-let music_game = false;
 
 let start_time = 0;
 let end_time = 0;
@@ -251,6 +252,21 @@ type_sounds.forEach(sound_type => {
         }
     });
 });
+game_mode_select.forEach(game_mode => {
+    game_mode.addEventListener('change', () => {
+        if(game_mode.value === 'hurryUp') {
+            hurryUp = true;
+            none = false;
+
+        } else if(game_mode.value === 'none') {
+            hurryUp = false;
+            none = true;
+
+        }
+
+    })
+
+})
 timeRange.addEventListener('input', () => {
     document.getElementById('valueTime').innerText = String(timeRange.value);
 
@@ -266,18 +282,6 @@ toggle.addEventListener('change', () => {
 
     }
 });
-music_game_switch.addEventListener('change', () => {
-    if(!combo.textContent) {
-        combo.innerText = 'コンボ：';
-        music_game = true;
-
-    } else if(combo.textContent) {
-        combo.textContent = '';
-        music_game = false;
-
-    }
-
-})
 Shiosan.addEventListener('click', () => {
     if(Num > 29) {
         SE[6].currentTime = 0;
@@ -331,7 +335,6 @@ document.addEventListener('keydown', (e) => {
         // start_time = performance.now();
         e.preventDefault();
         reflectRoman.innerText = '';
-        startGame();
         setWord();
         timer();
     }
@@ -880,20 +883,4 @@ const judgeCons = () => {
         quesBuffer.splice(0, 2, quesBuffer[0] + quesBuffer[1]);
 
     }
-};
-
-const startGame = () => {
-    if(!music_game) return;
-    if(music_game) return;
-    let timeStart = 0;
-
-    musics[0].currentTime = 0;
-    musics[0].volume = 0.7;
-    musics[0].play();
-
-    if(!musics[0].paused) {
-        timeStart = performance.now();
-
-    }
-
 };
