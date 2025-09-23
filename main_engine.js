@@ -30,6 +30,38 @@ const reflectRoman = document.getElementById('reflectRoman');
 const correctSpell = document.getElementById('correctSpell');
 const caret = document.getElementById('caret');
 
+// keyboard
+const Q = document.getElementById('Q');
+const W = document.getElementById('W');
+const E = document.getElementById('E');
+const R = document.getElementById('R');
+const T = document.getElementById('T');
+const Y = document.getElementById('Y');
+const U = document.getElementById('U');
+const I = document.getElementById('I');
+const O = document.getElementById('O');
+const P = document.getElementById('P');
+const A = document.getElementById('A');
+const S = document.getElementById('S');
+const D = document.getElementById('D');
+const F = document.getElementById('F');
+const G = document.getElementById('G');
+const H = document.getElementById('H');
+const J = document.getElementById('J');
+const K = document.getElementById('K');
+const L = document.getElementById('L');
+const co = document.getElementById('co');
+const Z = document.getElementById('Z');
+const X = document.getElementById('X');
+const C = document.getElementById('C');
+const V = document.getElementById('V');
+const B = document.getElementById('B');
+const N = document.getElementById('N')
+const M = document.getElementById('M');
+const ap = document.getElementById('ap');
+const pi = document.getElementById('pi');
+const space = document.getElementById('space');
+
 // board2
 const level = document.getElementById('level');
 const correct = document.getElementById('correct');
@@ -331,6 +363,40 @@ document.addEventListener('keydown', (e) => {
 
         judge();
     }
+    if(e.key === 'q') Q.classList.add('pressed');
+    if(e.key === 'w') W.classList.add('pressed');
+    if(e.key === 'e') E.classList.add('pressed');
+    if(e.key === 'r') R.classList.add('pressed');
+    if(e.key === 't') T.classList.add('pressed');
+    if(e.key === 'y') Y.classList.add('pressed');
+    if(e.key === 'u') U.classList.add('pressed');
+    if(e.key === 'i') I.classList.add('pressed');
+    if(e.key === 'o') O.classList.add('pressed');
+    if(e.key === 'p') P.classList.add('pressed');
+    
+    if(e.key === 'a') A.classList.add('pressed');
+    if(e.key === 's') S.classList.add('pressed');
+    if(e.key === 'd') D.classList.add('pressed');
+    if(e.key === 'f') F.classList.add('pressed');
+    if(e.key === 'g') G.classList.add('pressed');
+    if(e.key === 'h') H.classList.add('pressed');
+    if(e.key === 'j') J.classList.add('pressed');
+    if(e.key === 'k') K.classList.add('pressed');
+    if(e.key === 'l') L.classList.add('pressed');
+    if(e.key === ';') co.classList.add('pressed');
+    
+    if(e.key === 'z') Z.classList.add('pressed');
+    if(e.key === 'x') X.classList.add('pressed');
+    if(e.key === 'c') C.classList.add('pressed');
+    if(e.key === 'v') V.classList.add('pressed');
+    if(e.key === 'b') B.classList.add('pressed');
+    if(e.key === 'n') N.classList.add('pressed');
+    if(e.key === 'm') M.classList.add('pressed');
+    if(e.key === ',') ap.classList.add('pressed');
+    if(e.key === '.') pi.classList.add('pressed');
+
+    if(e.key === ' ') space.classList.add('pressed2');
+
     if(e.key === ' ' && !start && !end) {
         // start_time = performance.now();
         e.preventDefault();
@@ -407,6 +473,42 @@ document.addEventListener('keydown', (e) => {
     }
     
 });
+document.addEventListener('keyup', (e) => {
+    if(e.key === 'q') Q.classList.remove('pressed');
+    if(e.key === 'w') W.classList.remove('pressed');
+    if(e.key === 'e') E.classList.remove('pressed');
+    if(e.key === 'r') R.classList.remove('pressed');
+    if(e.key === 't') T.classList.remove('pressed');
+    if(e.key === 'y') Y.classList.remove('pressed');
+    if(e.key === 'u') U.classList.remove('pressed');
+    if(e.key === 'i') I.classList.remove('pressed');
+    if(e.key === 'o') O.classList.remove('pressed');
+    if(e.key === 'p') P.classList.remove('pressed');
+    
+    if(e.key === 'a') A.classList.remove('pressed');
+    if(e.key === 's') S.classList.remove('pressed');
+    if(e.key === 'd') D.classList.remove('pressed');
+    if(e.key === 'f') F.classList.remove('pressed');
+    if(e.key === 'g') G.classList.remove('pressed');
+    if(e.key === 'h') H.classList.remove('pressed');
+    if(e.key === 'j') J.classList.remove('pressed');
+    if(e.key === 'k') K.classList.remove('pressed');
+    if(e.key === 'l') L.classList.remove('pressed');
+    if(e.key === ';') co.classList.remove('pressed');
+    
+    if(e.key === 'z') Z.classList.remove('pressed');
+    if(e.key === 'x') X.classList.remove('pressed');
+    if(e.key === 'c') C.classList.remove('pressed');
+    if(e.key === 'v') V.classList.remove('pressed');
+    if(e.key === 'b') B.classList.remove('pressed');
+    if(e.key === 'n') N.classList.remove('pressed');
+    if(e.key === 'm') M.classList.remove('pressed');
+    if(e.key === ',') ap.classList.remove('pressed');
+    if(e.key === '.') pi.classList.remove('pressed');
+
+    if(e.key === ' ') space.classList.remove('pressed2');
+
+})
 
 const setWord = () => {
     start_time = performance.now();
