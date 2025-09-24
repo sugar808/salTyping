@@ -761,8 +761,19 @@ const timer = () => {
 };
 const judge = () => {
     if(romanBuffer === expectedValue[0]) {
-        // もしほかの予想される一文字目とアルファベットが同じなら両方の一文字目を削除する
-        if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
+        if(expectedValue.length === 1 && expectedValue === 'n' && romanBuffer === 'x') {
+        wrongCal();
+
+        SE[1].currentTime = 0;
+        SE[1].volume = 0.5;
+        SE[1].play();
+
+        correctSpell.innerText = expectedValue[0];
+        romanBuffer = '';
+
+    }
+    // もしほかの予想される一文字目とアルファベットが同じなら両方の一文字目を削除する
+    if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
