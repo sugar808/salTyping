@@ -119,6 +119,7 @@ const record_accuracy = [];
 const record_SKPM = [];
 const max_type_time = [];
 const selectedRandom = [];
+const romanBufferXN = [];
 
 console.log(aboutThema.item(0).value);
 
@@ -760,8 +761,7 @@ const timer = () => {
     }, 1000);
 };
 const judge = () => {
-    if(romanBuffer === expectedValue[0]) {
-        if(expectedValue.length === 1 && expectedValue === 'n' && romanBuffer === 'x') {
+    if(expectedValue.length === 1 && expectedValue === 'n' && romanBuffer === 'x') {
         wrongCal();
 
         SE[1].currentTime = 0;
@@ -772,8 +772,9 @@ const judge = () => {
         romanBuffer = '';
 
     }
-    // もしほかの予想される一文字目とアルファベットが同じなら両方の一文字目を削除する
-    if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
+    if(romanBuffer === expectedValue[0]) {
+        // もしほかの予想される一文字目とアルファベットが同じなら両方の一文字目を削除する
+        if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
@@ -843,7 +844,7 @@ const judge = () => {
             correctSpell.innerText = '';
         }
 
-    } else {
+    } else if(romanBuffer !== expectedValue[0] && romanBuffer !== expectedValue2[0] && romanBuffer !== expectedValue3[0] && romanBuffer !== '') {
         wrongCal();
         SE[1].currentTime = 0;
         SE[1].volume = 0.5;
@@ -884,6 +885,10 @@ const judge = () => {
         expectedValue3 = romanMap3[quesBuffer[0]];
 
     }
+
+    console.log(expectedValue);
+    console.log(expectedValue2);
+    console.log(expectedValue3);
 };
 
 const correctCal = () => {
