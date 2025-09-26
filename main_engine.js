@@ -779,7 +779,12 @@ const judge = () => {
             expectedValue3 = expectedValue3.slice(1);
             second = false;
 
-        } else {
+        } else if(expectedValue[0] === expectedValue2[0]) {
+            expectedValue = expectedValue.slice(1);
+            expectedValue2 = expectedValue2.slice(1);
+            third = false;
+             
+        }else {
             expectedValue = expectedValue.slice(1);
             second = false;
             third = false;
@@ -796,12 +801,17 @@ const judge = () => {
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
 
+        } else if(expectedValue2[0] === expectedValue[0]) {
+            expectedValue = expectedValue.slice(1);
+            expectedValue2 = expectedValue2.slice(1);
+            third = false;
+
         } else if(expectedValue2[0] === expectedValue3[0]) {
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
             first = false;
 
-        } else {
+        }else {
             expectedValue2 = expectedValue2.slice(1);
             first = false;
             third = false;
@@ -817,15 +827,20 @@ const judge = () => {
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
 
-        } else if(expectedValue[0] === expectedValue3[0]) {
-            expectedValue = expectedValue.slice(1);
+        } else if(expectedValue3[0] === expectedValue2[0]) {
             expectedValue3 = expectedValue3.slice(1);
-            third = false;
+            expectedValue2 = expectedValue2.slice(1);
+            first = false;
 
-        } else {
+        } else if(expectedValue3[0] === expectedValue[0]) {
             expectedValue3 = expectedValue3.slice(1);
+            expectedValue = expectedValue.slice(1);
             second = false;
-            third = false;
+
+        }else {
+            expectedValue3 = expectedValue3.slice(1);
+            first = false;
+            second = false;
 
         }
         correctCal();
