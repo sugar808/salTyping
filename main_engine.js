@@ -119,7 +119,6 @@ const record_accuracy = [];
 const record_SKPM = [];
 const max_type_time = [];
 const selectedRandom = [];
-const romanBufferXN = [];
 
 console.log(aboutThema.item(0).value);
 
@@ -134,6 +133,9 @@ let hard = false;
 let impossible = false;
 let hurryUp = false;
 let none = true;
+let first = true;
+let second = true;
+let third = true;
 let end = false;
 
 let start_time = 0;
@@ -761,20 +763,9 @@ const timer = () => {
     }, 1000);
 };
 const judge = () => {
-    if(expectedValue.length === 1 && expectedValue === 'n' && romanBuffer === 'x') {
-        wrongCal();
-
-        SE[1].currentTime = 0;
-        SE[1].volume = 0.5;
-        SE[1].play();
-
-        correctSpell.innerText = expectedValue[0];
-        romanBuffer = '';
-
-    }
-    if(romanBuffer === expectedValue[0]) {
-        // もしほかの予想される一文字目とアルファベットが同じなら両方の一文字目を削除する
+    if(romanBuffer == expectedValue[0] && first) {
         if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
+            console.log('ok');
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
@@ -782,78 +773,69 @@ const judge = () => {
         } else if(expectedValue[0] === expectedValue3[0]) {
             expectedValue = expectedValue.slice(1);
             expectedValue3 = expectedValue3.slice(1);
-
-        } else if(expectedValue[0] === expectedValue2[0]) {
-            expectedValue = expectedValue.slice(1);
-            expectedValue2 = expectedValue2.slice(1);
+            second = false;
 
         } else {
             expectedValue = expectedValue.slice(1);
-        }
+            second = false;
+            third = false;
 
+        }
         correctCal();
-        ringCorrectSE();
-
         romanBuffer = '';
-        if(correctSpell.textContent) {
-            correctSpell.innerText = '';
-        }
+        if(correctSpell.textContent) correctSpell.innerText = '';
 
-    } else if(romanBuffer === expectedValue2[0]) {
-        // もしほかの予想される一文字目とアルファベットが同じなら両方の一文字目を削除する
-        if(expectedValue2[0] === expectedValue[0]) {
-            expectedValue2 = expectedValue2.slice(1);
+    } else if(romanBuffer === expectedValue2[0] && second) {
+        if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
+            console.log('ok');
             expectedValue = expectedValue.slice(1);
-
-        } else if(expectedValue2[0] === expectedValue3[0]) {
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
+
+        } else if(expectedValue[0] === expectedValue3[0]) {
+            expectedValue = expectedValue.slice(1);
+            expectedValue3 = expectedValue3.slice(1);
+            second = false;
 
         } else {
-            expectedValue2 = expectedValue2.slice(1);
-        }
-
-        correctCal();
-        ringCorrectSE();
-
-        romanBuffer = '';
-        if(correctSpell.textContent) {
-            correctSpell.innerText = '';
-        }
-
-    } else if(romanBuffer === expectedValue3[0]) {
-        // もしほかの予想される一文字目とアルファベットが同じなら両方の一文字目を削除する
-        if(expectedValue3[0] === expectedValue[0]) {
-            expectedValue3 = expectedValue3.slice(1);
             expectedValue = expectedValue.slice(1);
+            second = false;
+            third = false;
 
-        } else if(expectedValue3[0] === expectedValue2[0]) {
-            expectedValue3 = expectedValue3.slice(1);
+        }
+        correctCal();
+        romanBuffer = '';
+        if(correctSpell.textContent) correctSpell.innerText = '';
+
+    } else if(romanBuffer === expectedValue3[0] && third) {
+        if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
+            console.log('ok');
+            expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
+            expectedValue3 = expectedValue3.slice(1);
+
+        } else if(expectedValue[0] === expectedValue3[0]) {
+            expectedValue = expectedValue.slice(1);
+            expectedValue3 = expectedValue3.slice(1);
+            second = false;
 
         } else {
-            expectedValue3 = expectedValue3.slice(1);
+            expectedValue = expectedValue.slice(1);
+            second = false;
+            third = false;
 
         }
-
         correctCal();
-        ringCorrectSE();
-
         romanBuffer = '';
-        if(correctSpell.textContent) {
-            correctSpell.innerText = '';
-        }
+        if(correctSpell.textContent) correctSpell.innerText = '';
 
-    } else if(romanBuffer !== expectedValue[0] && romanBuffer !== expectedValue2[0] && romanBuffer !== expectedValue3[0] && romanBuffer !== '') {
+    } else {
         wrongCal();
-        SE[1].currentTime = 0;
-        SE[1].volume = 0.5;
-        SE[1].play();
-
-        correctSpell.innerText = expectedValue[0];
         romanBuffer = '';
+        correctSpell.innerText = expectedValue[0];
 
     }
+
     if(expectedValue === '' || expectedValue2 === '' || expectedValue3 === '') {
         quesBuffer.shift();
         selectedWord = quesBuffer.join('');
@@ -862,6 +844,10 @@ const judge = () => {
         expectedValue = '';
         expectedValue2 = '';
         expectedValue3 = '';
+
+        first = true;
+        second = true;
+        third = true;
 
         judgeCons();
 
