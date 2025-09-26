@@ -791,6 +791,7 @@ const judge = () => {
 
         }
         correctCal();
+        ringCorrectSE();
         romanBuffer = '';
         if(correctSpell.textContent) correctSpell.innerText = '';
 
@@ -818,6 +819,7 @@ const judge = () => {
 
         }
         correctCal();
+        ringCorrectSE();
         romanBuffer = '';
         if(correctSpell.textContent) correctSpell.innerText = '';
 
@@ -844,11 +846,15 @@ const judge = () => {
 
         }
         correctCal();
+        ringCorrectSE();
         romanBuffer = '';
         if(correctSpell.textContent) correctSpell.innerText = '';
 
     } else {
         wrongCal();
+        SE[1].currentTime = 0;
+        SE[1].volume = 0.7;
+        SE[1].play();
         romanBuffer = '';
         if(first) {
             correctSpell.innerText = expectedValue[0];
