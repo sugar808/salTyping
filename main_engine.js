@@ -719,6 +719,10 @@ const setWord = () => {
     expectedValue = romanMap[selectedWord[0]];
     expectedValue2 = romanMap2[selectedWord[0]];
     expectedValue3 = romanMap3[selectedWord[0]];
+
+    console.log(expectedValue);
+    console.log(expectedValue2);
+    console.log(expectedValue3);
 };
 const timer = () => {
     reflectTime.innerText = '残り時間：' + timeIndex + '秒';
@@ -764,8 +768,8 @@ const timer = () => {
 };
 const judge = () => {
     if(romanBuffer == expectedValue[0] && first) {
+        console.log('ok');
         if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
-            console.log('ok');
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
@@ -786,20 +790,20 @@ const judge = () => {
         if(correctSpell.textContent) correctSpell.innerText = '';
 
     } else if(romanBuffer === expectedValue2[0] && second) {
+        console.log('jugemu');
         if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
-            console.log('ok');
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
 
-        } else if(expectedValue[0] === expectedValue3[0]) {
-            expectedValue = expectedValue.slice(1);
+        } else if(expectedValue2[0] === expectedValue3[0]) {
+            expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
-            second = false;
+            first = false;
 
         } else {
-            expectedValue = expectedValue.slice(1);
-            second = false;
+            expectedValue2 = expectedValue2.slice(1);
+            first = false;
             third = false;
 
         }
@@ -809,7 +813,6 @@ const judge = () => {
 
     } else if(romanBuffer === expectedValue3[0] && third) {
         if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
-            console.log('ok');
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
             expectedValue3 = expectedValue3.slice(1);
@@ -817,10 +820,10 @@ const judge = () => {
         } else if(expectedValue[0] === expectedValue3[0]) {
             expectedValue = expectedValue.slice(1);
             expectedValue3 = expectedValue3.slice(1);
-            second = false;
+            third = false;
 
         } else {
-            expectedValue = expectedValue.slice(1);
+            expectedValue3 = expectedValue3.slice(1);
             second = false;
             third = false;
 
@@ -832,7 +835,16 @@ const judge = () => {
     } else {
         wrongCal();
         romanBuffer = '';
-        correctSpell.innerText = expectedValue[0];
+        if(first) {
+            correctSpell.innerText = expectedValue[0];
+
+        } else if(second) {
+            correctSpell.innerText = expectedValue2[0];
+
+        } else if(third) {
+            correctSpell.innerText = expectedValue3[0];
+
+        }
 
     }
 
