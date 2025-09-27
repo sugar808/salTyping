@@ -956,21 +956,21 @@ const calSKPM = () => {
 
 };
 const liveCal = () => {
-    cal = setInterval(() => {
-        end_time = performance.now();
-        time = (end_time - start_time) / 1000;
-        speed = correctBuffer / time;
-        max_type_time.push(speed);
-        typeSpeed.innerText = String(speed.toFixed(1));
+    requestAnimationFrame(liveCal);
+    
+    end_time = performance.now();
+    time = (end_time - start_time) / 1000;
+    speed = correctBuffer / time;
+    max_type_time.push(speed);
+    typeSpeed.innerText = String(speed.toFixed(1));
 
-        const max = max_type_time.reduce((acc, cur) => {
-            return cur > acc ? cur : acc;
-        },max_type_time[0]);
+    const max = max_type_time.reduce((acc, cur) => {
+    return cur > acc ? cur : acc;
+    },max_type_time[0]);
 
-        maxSpeed.innerText = String(max.toFixed(1));
+    maxSpeed.innerText = String(max.toFixed(1));
 
-        gauge.style.width = speed * 20 + 'px';
-    }, 40);
+    gauge.style.width = speed * 20 + 'px';
 };
 liveCal();
 
