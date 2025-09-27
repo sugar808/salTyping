@@ -181,6 +181,20 @@ form
     width: 14rem;
 }
 
+/*
+toggles
+*/
+#sound_off {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    transition: background-color .4s ease-in-out;
+}
+#sound_off:checked {
+    background-color: #35b374;
+}
 
 .blink2 {
     position: relative;
