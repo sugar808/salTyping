@@ -2,6 +2,7 @@ html {
     color: white;
     letter-spacing: 3px;
     user-select: none;
+    scroll-behavior: smooth;
 }
 h4 {
     margin-top: 5px;
@@ -128,6 +129,9 @@ keyboard
 .pressed2 {
     background-color: #95732a;
 }
+.hidden {
+    display: none;
+}
 
 /*
 gauge
@@ -180,11 +184,10 @@ form
 #reflectKana {
     width: 14rem;
 }
-
 /*
-toggles
+#board5
 */
-#sound_off {
+.checkboxes {
     appearance: none;
     width: 15px;
     height: 15px;
@@ -192,7 +195,7 @@ toggles
     border-radius: 50%;
     transition: background-color .4s ease-in-out;
 }
-#sound_off:checked {
+.checkboxes:checked {
     background-color: #35b374;
 }
 
