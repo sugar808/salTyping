@@ -87,9 +87,6 @@ const lastRecord_accuracy = document.getElementById('lastRecord_accuracy');
 const lastRecord_SKPM = document.getElementById('lastRecord_SKPM');
 const toggle = document.getElementById('toggle');
 
-// footer
-const Shiosan = document.getElementById('Shiosan');
-
 // board3
 const difficulty = document.querySelectorAll('input[name="difficulty"]');
 const aboutThema = document.querySelectorAll('input[name="aboutThema"]');
@@ -103,12 +100,15 @@ const reflectQuestion = document.getElementById('reflectQuestion');
 const reflectKana = document.getElementById('reflectKana');
 const submitBtn1 = document.getElementById('submitBtn1');
 
+// board5
+const sound_off = document.getElementById('sound_off');
+const Shiosan = document.getElementById('Shiosan');
+
 const regex1 = /([ゃゅょぁぃぅぇぉ])/;
 const regex2 = /([っ])([かきくけこさしすせそたちつてとはひふへほまみむめもらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ])/;
-const regex3 = /([っ])(ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ|ゔぁ|ゔぃ|ゔぇ|ゔぉ)/;
+const regex3 = /([っ])(ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ|みゃ|みぃ|みゅ|みぇ|みょ|りゃ|りぃ|りゅ|りぇ|りょ|ゔぁ|ゔぃ|ゔぇ|ゔぉ)/;
 const regex4 = /([ん])([かきくけこさしすせそたちつてとはひふへほまみむめもらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽー1234567890？！、。])/;
-const regex5 = /([ん])(きゃ|きぃ|きゅ|きぇ|きょ|ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|ふぁ|ふぃ|ふぇ|ふぉ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ|ゔぁ|ゔぃ|ゔぇ|ゔぉ)/;
-const regex6 = /([bcdfghjklmnpqrstvwxyz])/;
+const regex5 = /([ん])(きゃ|きぃ|きゅ|きぇ|きょ|ぎゃ|ぎぃ|ぎゅ|ぎぇ|ぎょ|しゃ|しぃ|しゅ|しぇ|しょ|じゃ|じぃ|じゅ|じぇ|じょ|ちゃ|ちぃ|ちゅ|ちぇ|ちょ|てゃ|てぃ|てゅ|てぇ|てょ|でゃ|でぃ|でゅ|でぇ|でょ|ぢゃ|ふぁ|ふぃ|ふぇ|ふぉ|びゃ|びぃ|びゅ|びぇ|びょ|ぴゃ|ぴぃ|ぴゅ|ぴぇ|ぴょ|みゃ|みぃ|みゅ|みぇ|みょ|りゃ|りぃ|りゅ|りぇ|りょ|ゔぁ|ゔぃ|ゔぇ|ゔぉ)/;
 
 const quesBuffer = [];
 const pickKanji = [];
@@ -119,10 +119,12 @@ const record_accuracy = [];
 const record_SKPM = [];
 const max_type_time = [];
 const selectedRandom = [];
+const romanBuffer2 = [];
 
 console.log(aboutThema.item(0).value);
 
 let start = false;
+let off = false;
 let create = false;
 let normal = true;
 let light = false;
@@ -315,8 +317,6 @@ timeRange.addEventListener('input', () => {
     document.getElementById('valueTime').innerText = String(timeRange.value);
 
 });
-
-
 toggle.addEventListener('change', () => {
     if(!KanaArea.textContent) {
         KanaArea.innerText = 'ここに読み仮名が表示されます';
@@ -326,6 +326,16 @@ toggle.addEventListener('change', () => {
 
     }
 });
+sound_off.addEventListener('change', () => {
+    if(!off) {
+        off = true;
+
+    } else {
+        off = false;
+
+    }
+
+})
 Shiosan.addEventListener('click', () => {
     if(Num > 29) {
         SE[6].currentTime = 0;
@@ -503,7 +513,7 @@ document.addEventListener('keydown', (e) => {
         end = false;
     }
     
-});
+}, {passive: false} );
 document.addEventListener('keyup', (e) => {
     if(e.key === '1') n1.classList.remove('pressed');
     if(e.key === '2') n2.classList.remove('pressed');
@@ -561,14 +571,20 @@ const setWord = () => {
     if(!start) timeIndex = timeRange.value;
     start = true;
     if(questionSteps === 7 || questionSteps === 14 || questionSteps === 21 || questionSteps === 28 || questionSteps === 35 || questionSteps === 42 || questionSteps === 49) {
-        SE[8].currentTime = 0;
-        SE[8].volume = 0.5;
-        SE[8].play();
+        if(!off) {
+            SE[8].currentTime = 0;
+            SE[8].volume = 0.5;
+            SE[8].play();
+
+        }
 
     } else {
-        SE[7].currentTime = 0;
-        SE[7].volume = 0.5;
-        SE[7].play();
+        if(!off) {
+            SE[7].currentTime = 0;
+            SE[7].volume = 0.5;
+            SE[7].play();
+
+        }
 
     }
 
@@ -732,9 +748,12 @@ const timer = () => {
 
         if(reflectTime.textContent == '残り時間：0秒') {
             clearInterval(setTime);
-            SE[10].currentTime = 0;
-            SE[10].volume = 0.7;
-            SE[10].play();
+            if(!off) {
+                SE[10].currentTime = 0;
+                SE[10].volume = 0.7;
+                SE[10].play();
+
+            }
             calSKPM();
 
             start = false;
@@ -790,13 +809,16 @@ const judge = () => {
             third = false;
 
         }
+        
         correctCal();
-        ringCorrectSE();
         romanBuffer = '';
         if(correctSpell.textContent) correctSpell.innerText = '';
+        if(!off) {
+            ringCorrectSE();
+
+        }
 
     } else if(romanBuffer === expectedValue2[0] && second) {
-        console.log('jugemu');
         if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
@@ -819,9 +841,12 @@ const judge = () => {
 
         }
         correctCal();
-        ringCorrectSE();
         romanBuffer = '';
         if(correctSpell.textContent) correctSpell.innerText = '';
+        if(!off) {
+            ringCorrectSE();
+
+        }
 
     } else if(romanBuffer === expectedValue3[0] && third) {
         if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
@@ -846,15 +871,15 @@ const judge = () => {
 
         }
         correctCal();
-        ringCorrectSE();
         romanBuffer = '';
         if(correctSpell.textContent) correctSpell.innerText = '';
+        if(!off) {
+            ringCorrectSE();
+
+        }
 
     } else {
         wrongCal();
-        SE[1].currentTime = 0;
-        SE[1].volume = 0.7;
-        SE[1].play();
         romanBuffer = '';
         if(first) {
             correctSpell.innerText = expectedValue[0];
@@ -864,6 +889,12 @@ const judge = () => {
 
         } else if(third) {
             correctSpell.innerText = expectedValue3[0];
+
+        }
+        if(!off) {
+            SE[1].currentTime = 0;
+            SE[1].volume = 0.7;
+            SE[1].play();
 
         }
 
@@ -1027,16 +1058,14 @@ const judgeCons = () => {
     } else if(regex4.test(quesBuffer[0] + quesBuffer[1]) && !regex1.test(quesBuffer[2])) {
         // んかなどのん+かの組み合わせにマッチ
         const consonant = romanMap[quesBuffer[0]][0];
-        const consonant2 = romanMap[quesBuffer[0]];
-        const consonant3 = romanMap2[quesBuffer[0]];
 
         expectedValue = consonant + romanMap[quesBuffer[1]];
         expectedValue2 = consonant + romanMap2[quesBuffer[1]];
         expectedValue3 = consonant + romanMap3[quesBuffer[1]];
 
-        expectedValue4 = consonant2 + romanMap[quesBuffer[1]];
-        expectedValue5 = consonant2 + romanMap2[quesBuffer[1]];
-        expectedValue6 = consonant2 + romanMap3[quesBuffer[1]];
+        expectedValue4 = consonant + consonant + romanMap[quesBuffer[1]];
+        expectedValue5 = consonant + consonant + romanMap2[quesBuffer[1]];
+        expectedValue6 = consonant + consonant + romanMap3[quesBuffer[1]];
 
         // ん+かを一文字にする
         quesBuffer.splice(0, 2, quesBuffer[0] + quesBuffer[1]);
