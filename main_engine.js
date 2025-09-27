@@ -102,6 +102,7 @@ const submitBtn1 = document.getElementById('submitBtn1');
 
 // board5
 const sound_off = document.getElementById('sound_off');
+const keyboard_switch = document.getElementById('keyboard_switch');
 const Shiosan = document.getElementById('Shiosan');
 
 const regex1 = /([ゃゅょぁぃぅぇぉ])/;
@@ -138,6 +139,7 @@ let none = true;
 let first = true;
 let second = true;
 let third = true;
+let showKeyboard = true;
 let end = false;
 
 let start_time = 0;
@@ -335,6 +337,18 @@ sound_off.addEventListener('change', () => {
 
     }
 
+});
+keyboard_switch.addEventListener('change', () => {
+    if(showKeyboard) {
+        showKeyboard = false;
+        document.getElementById('keyboard').classList.add('hidden');
+
+    } else {
+        showKeyboard = true;
+        document.getElementById('keyboard').classList.remove('hidden');
+
+    }
+
 })
 Shiosan.addEventListener('click', () => {
     if(Num > 29) {
@@ -385,53 +399,6 @@ document.addEventListener('keydown', (e) => {
 
         judge();
     }
-    if(e.key === '1') n1.classList.add('pressed');
-    if(e.key === '2') n2.classList.add('pressed');
-    if(e.key === '3') n3.classList.add('pressed');
-    if(e.key === '4') n4.classList.add('pressed');
-    if(e.key === '5') n5.classList.add('pressed');
-    if(e.key === '6') n6.classList.add('pressed');
-    if(e.key === '7') n7.classList.add('pressed');
-    if(e.key === '8') n8.classList.add('pressed');
-    if(e.key === '9') n9.classList.add('pressed');
-    if(e.key === '0') n0.classList.add('pressed');
-    if(e.key === '-') mi.classList.add('pressed');
-    if(e.key === '=') iq.classList.add('pressed');
-
-    if(e.key === 'q') Q.classList.add('pressed');
-    if(e.key === 'w') W.classList.add('pressed');
-    if(e.key === 'e') E.classList.add('pressed');
-    if(e.key === 'r') R.classList.add('pressed');
-    if(e.key === 't') T.classList.add('pressed');
-    if(e.key === 'y') Y.classList.add('pressed');
-    if(e.key === 'u') U.classList.add('pressed');
-    if(e.key === 'i') I.classList.add('pressed');
-    if(e.key === 'o') O.classList.add('pressed');
-    if(e.key === 'p') P.classList.add('pressed');
-    if(e.key === '{') par.classList.add('pressed');
-    
-    if(e.key === 'a') A.classList.add('pressed');
-    if(e.key === 's') S.classList.add('pressed');
-    if(e.key === 'd') D.classList.add('pressed');
-    if(e.key === 'f') F.classList.add('pressed');
-    if(e.key === 'g') G.classList.add('pressed');
-    if(e.key === 'h') H.classList.add('pressed');
-    if(e.key === 'j') J.classList.add('pressed');
-    if(e.key === 'k') K.classList.add('pressed');
-    if(e.key === 'l') L.classList.add('pressed');
-    if(e.key === ';') co.classList.add('pressed');
-    
-    if(e.key === 'z') Z.classList.add('pressed');
-    if(e.key === 'x') X.classList.add('pressed');
-    if(e.key === 'c') C.classList.add('pressed');
-    if(e.key === 'v') V.classList.add('pressed');
-    if(e.key === 'b') B.classList.add('pressed');
-    if(e.key === 'n') N.classList.add('pressed');
-    if(e.key === 'm') M.classList.add('pressed');
-    if(e.key === ',') ap.classList.add('pressed');
-    if(e.key === '.') pi.classList.add('pressed');
-
-    if(e.key === ' ') space.classList.add('pressed2');
 
     if(e.key === ' ' && !start && !end) {
         // start_time = performance.now();
@@ -510,10 +477,60 @@ document.addEventListener('keydown', (e) => {
         pickKana.length = 0;
 
         end = false;
+        
     }
+
+    if(!showKeyboard) return;
+    if(e.key === ' ') space.classList.add('pressed2');
+    if(e.key === '1') n1.classList.add('pressed');
+    if(e.key === '2') n2.classList.add('pressed');
+    if(e.key === '3') n3.classList.add('pressed');
+    if(e.key === '4') n4.classList.add('pressed');
+    if(e.key === '5') n5.classList.add('pressed');
+    if(e.key === '6') n6.classList.add('pressed');
+    if(e.key === '7') n7.classList.add('pressed');
+    if(e.key === '8') n8.classList.add('pressed');
+    if(e.key === '9') n9.classList.add('pressed');
+    if(e.key === '0') n0.classList.add('pressed');
+    if(e.key === '-') mi.classList.add('pressed');
+    if(e.key === '=') iq.classList.add('pressed');
+
+    if(e.key === 'q') Q.classList.add('pressed');
+    if(e.key === 'w') W.classList.add('pressed');
+    if(e.key === 'e') E.classList.add('pressed');
+    if(e.key === 'r') R.classList.add('pressed');
+    if(e.key === 't') T.classList.add('pressed');
+    if(e.key === 'y') Y.classList.add('pressed');
+    if(e.key === 'u') U.classList.add('pressed');
+    if(e.key === 'i') I.classList.add('pressed');
+    if(e.key === 'o') O.classList.add('pressed');
+    if(e.key === 'p') P.classList.add('pressed');
+    if(e.key === '{') par.classList.add('pressed');
+    
+    if(e.key === 'a') A.classList.add('pressed');
+    if(e.key === 's') S.classList.add('pressed');
+    if(e.key === 'd') D.classList.add('pressed');
+    if(e.key === 'f') F.classList.add('pressed');
+    if(e.key === 'g') G.classList.add('pressed');
+    if(e.key === 'h') H.classList.add('pressed');
+    if(e.key === 'j') J.classList.add('pressed');
+    if(e.key === 'k') K.classList.add('pressed');
+    if(e.key === 'l') L.classList.add('pressed');
+    if(e.key === ';') co.classList.add('pressed');
+    
+    if(e.key === 'z') Z.classList.add('pressed');
+    if(e.key === 'x') X.classList.add('pressed');
+    if(e.key === 'c') C.classList.add('pressed');
+    if(e.key === 'v') V.classList.add('pressed');
+    if(e.key === 'b') B.classList.add('pressed');
+    if(e.key === 'n') N.classList.add('pressed');
+    if(e.key === 'm') M.classList.add('pressed');
+    if(e.key === ',') ap.classList.add('pressed');
+    if(e.key === '.') pi.classList.add('pressed');
     
 }, {passive: false} );
 document.addEventListener('keyup', (e) => {
+    if(!showKeyboard) return;
     if(e.key === '1') n1.classList.remove('pressed');
     if(e.key === '2') n2.classList.remove('pressed');
     if(e.key === '3') n3.classList.remove('pressed');
@@ -957,7 +974,7 @@ const calSKPM = () => {
 };
 const liveCal = () => {
     requestAnimationFrame(liveCal);
-    
+
     end_time = performance.now();
     time = (end_time - start_time) / 1000;
     speed = correctBuffer / time;
