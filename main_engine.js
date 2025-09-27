@@ -143,7 +143,7 @@ let end = false;
 let start_time = 0;
 let end_time = 0;
 let random = 0;
-let timeIndex = 0;
+let LIMIT_TIME = 0;
 let culResult = 0;
 let enteredIndex = 0;
 let correctBuffer = 0;
@@ -441,7 +441,6 @@ document.addEventListener('keydown', (e) => {
         timer();
     }
     if(e.key === 'S' && start && !end) {
-        console.log('ok');
         end = true;
         start = false;
         caret.innerText = '>>end --Press Escape';
@@ -466,7 +465,7 @@ document.addEventListener('keydown', (e) => {
         correctBuffer = 0;
         correctBuffer2 = 0;
         wrongBuffer = 0;
-        timeIndex = timeRange.value;
+        LIMIT_TIME = timeRange.value;
         if(impossible) {
             create = false;
             questionSteps = 43;
@@ -568,7 +567,10 @@ document.addEventListener('keyup', (e) => {
 
 const setWord = () => {
     start_time = performance.now();
-    if(!start) timeIndex = timeRange.value;
+    if(!start) {
+        LIMIT_TIME = timeRange.value
+        game_start_time = performance.now();
+    };
     start = true;
     if(questionSteps === 7 || questionSteps === 14 || questionSteps === 21 || questionSteps === 28 || questionSteps === 35 || questionSteps === 42 || questionSteps === 49) {
         if(!off) {
@@ -652,7 +654,6 @@ const setWord = () => {
         selectedRandom.length = 0;
 
     } else if(!create && questionSteps >= 42 && questionSteps < 49) {
-        console.log('kitade');
         pickKanji.length = 0;
         pickKana.length = 0;
 
@@ -664,7 +665,6 @@ const setWord = () => {
         selectedRandom.length = 0;
 
     }
-    console.log(pickKanji);
     // 乱数を生成
     random = Math.floor(Math.random() * pickKanji.length);
 
@@ -712,7 +712,6 @@ const setWord = () => {
         KanaArea.innerText = selectedWord;
 
     }
-    console.log('koko');
     pickKanji.splice(random, 1);
     pickKana.splice(random, 1);
 
@@ -735,16 +734,12 @@ const setWord = () => {
     expectedValue = romanMap[selectedWord[0]];
     expectedValue2 = romanMap2[selectedWord[0]];
     expectedValue3 = romanMap3[selectedWord[0]];
-
-    console.log(expectedValue);
-    console.log(expectedValue2);
-    console.log(expectedValue3);
 };
 const timer = () => {
-    reflectTime.innerText = '残り時間：' + timeIndex + '秒';
+    reflectTime.innerText = '残り時間：' + LIMIT_TIME + '秒';
     setTime = setInterval(() => {
-        timeIndex--;
-        reflectTime.innerText = '残り時間：' + timeIndex + '秒';
+        LIMIT_TIME--;
+        reflectTime.innerText = '残り時間：' + LIMIT_TIME + '秒';
 
         if(reflectTime.textContent == '残り時間：0秒') {
             clearInterval(setTime);
@@ -766,8 +761,7 @@ const timer = () => {
             record_correct.push(correctBuffer2);
             record_wrong.push(wrongBuffer);
             record_accuracy.push(culResult);
-            record_SKPM.push(SKPM)
-            console.log(record_accuracy);
+            record_SKPM.push(SKPM);
 
         }
         if(record_correct[1]) {
@@ -787,7 +781,6 @@ const timer = () => {
 };
 const judge = () => {
     if(romanBuffer == expectedValue[0] && first) {
-        console.log('ok');
         if(expectedValue[0] === expectedValue2[0] && expectedValue2[0] === expectedValue3[0]) {
             expectedValue = expectedValue.slice(1);
             expectedValue2 = expectedValue2.slice(1);
@@ -921,7 +914,7 @@ const judge = () => {
             totalRoman = '';
             reflectRoman.innerText = '';
 
-            console.log('--Next-Question--');
+            // console.log('--Next-Question--');
 
             setWord();
             return;
@@ -935,10 +928,6 @@ const judge = () => {
         expectedValue3 = romanMap3[quesBuffer[0]];
 
     }
-
-    console.log(expectedValue);
-    console.log(expectedValue2);
-    console.log(expectedValue3);
 };
 
 const correctCal = () => {
