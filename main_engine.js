@@ -1,3 +1,20 @@
+const getDeviceType = () => {
+    const navi = navigator.userAgent;
+    const width = window.innerWidth;
+
+    if(/Mobi|iPhone|Android.+Mobile/.test(navi)) {
+        document.getElementById('warning1').innerText = 'スマートフォンからプレイする場合、効果音がオンになっているとサイトが正常に動作しません。';
+        document.getElementById('warning2').innerText = 'お手数ですがすべての効果音をオフにしてください';
+
+    } else if(/Tablet|iPad|Android(?!.*Mobile)/.test(navi)) {
+        document.getElementById('warning1').innerText = 'スマートフォンからプレイする場合、効果音がオンになっているとサイトが正常に動作しません。';
+        document.getElementById('warning2').innerText = 'お手数ですがすべての効果音をオフにしてください';
+
+    }
+
+};
+getDeviceType();
+
 const SE = [
     new Audio('./SE/キーボード1.mp3'),
     new Audio('./SE/ビープ音5.mp3'),
@@ -10,11 +27,6 @@ const SE = [
     new Audio('./SE/決定ボタンを押す43.mp3'),
     new Audio('./SE/決定ボタンを押す14.mp3'),
     new Audio('./SE/決定ボタンを押す10.mp3'),
-];
-const musics = [
-    new Audio('./musics/ゲームで敵と戦ってる的な曲.mp3'),
-];
-const Achievements = [
 ];
 
 // board1
@@ -402,6 +414,11 @@ document.addEventListener('keydown', (e) => {
 
     if(e.key === ' ' && !start && !end) {
         // start_time = performance.now();
+        if(document.getElementById('warning1').textContent) {
+            document.getElementById('warning1').innerText = '';
+            document.getElementById('warning2').innerText = '';
+
+        }
         e.preventDefault();
         reflectRoman.innerText = '';
         setWord();
