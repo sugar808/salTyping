@@ -78,12 +78,35 @@ footer {
 .colored {
     color: red;
 }
-.greenyellow {
+
+
+/*
+levels
+*/
+.Possible {
     color: greenyellow;
 }
-.blackred {
+.Prologue {
+    color: yellow;
+}
+.CantSayAnything {
+    color: orange;
+}
+.Hard {
+    color: #ff4800;
+}
+.VeryHard {
+    color: #fa4949;
+}
+.NoWay {
+    color: #ff0000;
+}
+.Impossible {
     color: #7a2020;
 }
+
+
+
 .blink {
     animation: blink2 1s infinite;
 }
