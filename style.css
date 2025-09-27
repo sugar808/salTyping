@@ -221,6 +221,12 @@ form
 .checkboxes:checked {
     background-color: #35b374;
 }
+/*
+warning
+*/
+#warning {
+    background-color: gray;
+}
 
 .blink2 {
     position: relative;
