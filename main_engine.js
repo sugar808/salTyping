@@ -486,9 +486,13 @@ document.addEventListener('keydown', (e) => {
             KanaArea.innerText = ''
 
         }
-        level.classList.remove('greenyellow');
-        level.classList.remove('colored');
-        level.classList.remove('blackred');
+        level.classList.remove('Possible');
+        level.classList.remove('Prologue');
+        level.classList.remove('CantSayAnything');
+        level.classList.remove('Hard');
+        level.classList.remove('VeryHard');
+        level.classList.remove('NoWay');
+        level.classList.remove('Impossible');
 
         pickKanji.length = 0;
         pickKana.length = 0;
@@ -704,29 +708,37 @@ const setWord = () => {
 
     if(questionSteps < 7) {
         level.innerText = 'Possible';
-        level.classList.add('greenyellow');
+        level.classList.add('Possible');
 
     } else if(questionSteps >= 7 && questionSteps < 14) {
         level.innerText = 'Prologue';
-        level.classList.remove('greenyellow');
+        level.classList.remove('Possible');
+        level.classList.add('Prologue');
 
     } else if(questionSteps >= 14 && questionSteps < 21) {
         level.innerText = 'Cant Say Anything';
+        level.classList.remove('Prologue');
+        level.classList.add('CantSayAnything');
 
     } else if(questionSteps >= 21 && questionSteps < 28) {
         level.innerText = 'Hard';
+        level.classList.remove('CantSayAnything');
+        level.classList.add('Hard');
 
     } else if(questionSteps >= 28 && questionSteps < 35) {
         level.innerText = 'Very Hard';
+        level.classList.remove('Hard');
+        level.classList.add('VeryHard');
 
     } else if(questionSteps >= 35 && questionSteps < 42) {
         level.innerText = 'No Way';
-        level.classList.add('colored');
+        level.classList.remove('VeryHard');
+        level.classList.add('NoWay');
 
     } else if(questionSteps >= 42 && questionSteps < 49) {
         level.innerText = 'Impossible';
-        level.classList.remove('colored');
-        level.classList.add('blackred');
+        level.classList.remove('NoWay');
+        level.classList.add('Impossible');
 
     }
     if(easy) {
