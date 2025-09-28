@@ -7,12 +7,12 @@
 
     <link rel="stylesheet" href="./style.css">
 </head>
-<body id="background" class="dark">
+<body id="background" class="neumorphism">
     <header>
         <div id="board5">
             <input type="checkbox" id="sound_off" class="checkboxes">すべての効果音をオフにする
             <input type="checkbox" id="keyboard_switch" class="checkboxes">キーボードを非表示にする
-            <h5>created by <span id="Shiosan">Shio-san</span></h5>
+            <h5>created by Shio-san</h5>
         </div>
     </header>
     <main>
@@ -32,7 +32,7 @@
             <h3><span id="reflectRoman">Shift + s でリセット</span><span id="correctSpell" class="colored"></span><span id="caret"></span></h3>
         </div>
 
-        <div id="keyboard">
+        <div id="keyboard" class="liquid-glass-card">
             <h4>
                 <div id="row1">
                     <span id="n1" class="cap">1</span><span id="n2" class="cap">2</span><span id="n3" class="cap">3</span><span id="n4" class="cap">4</span><span id="n5" class="cap">5</span><span id="n6" class="cap">6</span><span id="n7" class="cap">7</span><span id="n8" class="cap">8</span><span id="n9" class="cap">9</span><span id="n0" class="cap">0</span><span id="mi" class="cap">-</span><span id="iq" class="cap">=</span>
@@ -58,7 +58,7 @@
             <h3>誤打：<span id="wrong">0</span>回</h3>
             <h3>正誤率：<span id="accuracy">0</span>%</h3>
             <h3>SKPM：<span id="totalTypeSpeed">0</span></h3>
-            <h2 id="lastRecords" class="greenyellow"></h2>
+            <h2 id="lastRecords" class="Possible"></h2>
             <h3 id="lastRecord_score"></h3>
             <h3 id="lastRecord_correct"></h3>
             <h3 id="lastRecord_wrong"></h3>
@@ -80,11 +80,6 @@
                 <input class="btn" type="radio" name="fontType" value="Dot" checked>DotGothic16
                 <input class="btn" type="radio" name="fontType" value="Yusei">YuseiMagic
                 <input class="btn" type="radio" name="fontType" value="Rockn">RocknRollOne
-            </div>
-            <div class="themaMenu"><h4>テーマ</h4>
-                <input class="btn" type="radio" name="aboutThema" value="dark" checked>dark
-                <input class="btn" type="radio" name="aboutThema" value="Japanese_modern">Japanese_modern
-                <input class="btn" type="radio" name="aboutThema" value="gradation">gradation
             </div>
             <div class="type_soundsMenu"><h4>タイプ音</h4>
                 <input class="btn" type="radio" name="type_sounds" value="normal" checked>normal
@@ -109,6 +104,7 @@
 
         <div id="board4">
             <h3>自分で問題を追加する</h3>
+            <button id="deleteQuestions">すべての問題を削除する</button>
             <input id="reflectQuestion" type="text" autocomplete="off" placeholder="※漢字を含む">
             <input id="reflectKana" type="text" autocomplete="off" placeholder="※平仮名のみの二字以上">
             <button id="submitBtn1">追加</button>
@@ -117,8 +113,13 @@
 
     <footer>
     </footer>
-
     
+    <svg>
+        <filter id="wavyFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.01" numOctaves="2" result="turb"/>
+            <feDisplacementMap in="SourceGraphic" in2="turb" scale="45" xChannelSelector="A" yChannelSelector="R">
+        </filter>
+    </svg>
 
     <script src="./data/romanMaps.js"></script>
     <script src="./data/questions.js"></script>
