@@ -1,8 +1,11 @@
+:root {
+    --bg: #e9e9f6;
+}
 html {
-    color: white;
+    color: rgb(102, 102, 102);
     letter-spacing: 3px;
     user-select: none;
-    scroll-behavior: smooth;
+    background: var(--bg);
 }
 h4 {
     margin-top: 5px;
@@ -39,9 +42,6 @@ footer {
 @font-face {
     font-family: 'Rockn';
     src: url('./fonts/RocknRollOne-Regular.ttf');
-}
-@media (prefers-color-scheme: dark) {
-    body { background: red; color: #eee; }
 }
 @keyframes blink {
     0% { 
@@ -131,7 +131,6 @@ keyboard
     padding: 2px;
     margin-bottom: 2rem;
     border: 2px solid rgb(190, 190, 190);
-    background-color: #2f2f2f;
     transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
 }
 .cap {
@@ -171,21 +170,6 @@ gauge
 }
 
 /*
-thema
-*/
-.Japanese_modern {
-    background: #688d57;
-    transition: background .5s, opacity .5s;
-}
-.gradation {
-    background: linear-gradient(50deg, #d477c8, #4e5d81, #255254);
-}
-.dark {
-    background: #626b83;
-    transition: background .5s, opacity .5s;
-}
-
-/*
 fonts
 */
 .Dot {
@@ -210,16 +194,43 @@ form
 /*
 #board5
 */
+#board5 {
+    position: fixed;
+    top: 40px;
+    left: 150px;
+    width: 18rem;
+    height: 4rem;
+    border: none;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    backdrop-filter: url(#wavyFilter);
+
+    box-shadow: 
+        4px 4px 4px rgba(0, 0, 0, 0.3),
+        -4px -4px 4px rgba(255, 255, 255, 0.9),
+        inset 4px 4px 4px rgba(0, 0, 0, 0.3),
+        inset -4px -4px 4px rgba(255, 255, 255, 0.9);
+}
 .checkboxes {
     appearance: none;
     width: 15px;
     height: 15px;
-    background-color: white;
+    border: none;
     border-radius: 50%;
-    transition: background-color .4s ease-in-out;
+    transition: box-shadow .4s ease-in-out;
+
+    box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.3),
+        -4px -4px 4px rgba(255, 255, 255, 0.9),
+        inset 4px 4px 8px transparent,
+        inset -4px -4px 4px transparent;
 }
 .checkboxes:checked {
-    background-color: #35b374;
+    box-shadow: 
+        4px 4px 4px transparent,
+        -4px -4px 4px transparent,
+        inset 4px 4px 4px rgba(0, 0, 0, 0.3),
+        inset -4px -4px 4px rgba(255, 255, 255, 0.9);
 }
 /*
 warning
@@ -261,9 +272,16 @@ warning
         width: 10rem;
         padding: 30px;
         margin-bottom: 2rem;
-        border: 4px solid white;
-        border-radius: 50px;
+        border: none;
+        border-radius: 20px;
+        background: #e9e9f6;
         transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
+
+        box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.3),
+        -4px -4px 4px rgba(255, 255, 255, 0.9),
+        inset 4px 4px 8px transparent,
+        inset -4px -4px 4px transparent;
     }
     #gaugeBar {
         display: inline-block;
@@ -278,9 +296,16 @@ warning
         width: 32rem;
         padding: 30px;
         margin-bottom: 2rem;
-        border: 4px solid white;
-        border-radius: 50px;
+        border: none;
+        border-radius: 20px;
+        background: #e9e9f6;
         transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
+
+        box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.3),
+        -4px -4px 4px rgba(255, 255, 255, 0.9),
+        inset 4px 4px 8px transparent,
+        inset -4px -4px 4px transparent;
     }
     #gaugeBar {
         display: inline-block;
@@ -295,9 +320,16 @@ warning
         width: 30rem;
         padding: 30px;
         margin-bottom: 2rem;
-        border: 4px solid white;
-        border-radius: 50px;
+        border: none;
+        border-radius: 20px;
+        background: #e9e9f6;
         transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
+
+        box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.3),
+        -4px -4px 4px rgba(255, 255, 255, 0.9),
+        inset 4px 4px 8px transparent,
+        inset -4px -4px 4px transparent;
     }
     #gaugeBar {
         display: inline-block;
@@ -312,24 +344,18 @@ warning
         width: 43rem;
         padding: 30px;
         margin-bottom: 2rem;
-        border: 4px solid white;
-        border-radius: 50px;
+        border: none;
+        border-radius: 20px;
+        background: #e9e9f6;
         transition: all .5s cubic-bezier(0.47, -1.1, 0.8, 1.9);
+
+        box-shadow: 
+        4px 4px 8px rgba(0, 0, 0, 0.3),
+        -4px -4px 4px rgba(255, 255, 255, 0.9),
+        inset 4px 4px 8px transparent,
+        inset -4px -4px 4px transparent;
     }
     #gaugeBar {
         display: inline-block;
-    }
-}
-@media (prefers-color-scheme: dark) {
-    .dark {
-        background: #232938;
-        transition: background .5s, opacity .5s;
-    }
-    .Japanese_modern {
-        background: #8d5757;
-        transition: background .5s, opacity .5s;
-    }
-    .gradation {
-        background: linear-gradient(50deg, #232938, #4e5d81, #542544);
     }
 }
