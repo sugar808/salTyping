@@ -342,17 +342,6 @@ keyboard_switch.addEventListener('change', () => {
 
     }
 
-})
-Shiosan.addEventListener('click', () => {
-    if(Num > 29) {
-        SE[6].currentTime = 0;
-        SE[6].play();
-
-    } else {
-        Num++;
-        Shiosan.style.paddingLeft = Num + 'px';
-
-    }
 });
 deleteQuestions.addEventListener('click', () => {
     for(const buffer in words2) {
