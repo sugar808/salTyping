@@ -102,21 +102,21 @@ const toggle = document.getElementById('toggle');
 
 // board3
 const difficulty = document.querySelectorAll('input[name="difficulty"]');
-const aboutThema = document.querySelectorAll('input[name="aboutThema"]');
 const fontType = document.querySelectorAll('input[name="fontType"');
 const type_sounds = document.querySelectorAll('input[name="type_sounds"');
 const game_mode_select = document.querySelectorAll('input[name="game_mode_select"]');
 const timeRange = document.getElementById('timeRange');
 
 // board4
+const deleteQuestions = document.getElementById('deleteQuestions');
 const reflectQuestion = document.getElementById('reflectQuestion');
 const reflectKana = document.getElementById('reflectKana');
 const submitBtn1 = document.getElementById('submitBtn1');
 
 // board5
+const board5 = document.getElementById('board5');
 const sound_off = document.getElementById('sound_off');
 const keyboard_switch = document.getElementById('keyboard_switch');
-const Shiosan = document.getElementById('Shiosan');
 
 const regex1 = /([ゃゅょぁぃぅぇぉ])/;
 const regex2 = /([っ])([かきくけこさしすせそたちつてとはひふへほまみむめもらりるれろわをがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽゔ])/;
@@ -135,8 +135,6 @@ const max_type_time = [];
 const selectedRandom = [];
 const romanBuffer2 = [];
 
-console.log(aboutThema.item(0).value);
-
 let start = false;
 let off = false;
 let create = false;
@@ -153,6 +151,7 @@ let first = true;
 let second = true;
 let third = true;
 let showKeyboard = true;
+let mouseDown = false;
 let end = false;
 
 let start_time = 0;
@@ -181,6 +180,24 @@ let expectedValue3 = '';
 let expectedValue4 = '';
 let expectedValue5 = '';
 let expectedValue6 = '';
+
+board5.addEventListener('mousedown', () => {
+    mouseDown = true;
+
+});
+board5.addEventListener('mouseup', () => {
+    mouseDown = false;
+    
+});
+board5.addEventListener('mousemove', (e) => {
+    if(mouseDown) {
+        board5.style.left = e.clientX + 'px';
+        board5.style.top = e.clientY + 'px';
+
+    }
+
+})
+
 
 // 難易度の変更
 difficulty.forEach(diffi => {
@@ -214,45 +231,6 @@ difficulty.forEach(diffi => {
             normalD = false;
             hard = false;
             impossible = true;
-
-        }
-    });
-});
-// テーマの変更
-aboutThema.forEach(radio => {
-    radio.addEventListener('change', () => {
-        const background = document.getElementById('background');
-        const board2 = document.getElementById('board2');
-        const board3 = document.getElementById('board3');
-
-        if(radio.value === 'Japanese_modern') {
-            background.classList.add('Japanese_modern');
-            background.classList.remove('dark');
-            background.classList.remove('gradation');
-            board2.classList.remove('shadow');
-            board3.classList.remove('shadow');
-
-            SE[2].currentTime = 0;
-            SE[2].volume = 0.1;
-            SE[2].play();
-
-        } else if(radio.value === 'gradation') {
-            background.classList.add('gradation');
-            background.classList.remove('dark');
-            background.classList.remove('Japanese_modern');
-            board2.classList.add('shadow');
-            board3.classList.add('shadow');
-
-        } else if(radio.value === 'dark') {
-            background.classList.add('dark');
-            background.classList.remove('Japanese_modern');
-            background.classList.remove('gradation');
-            board2.classList.remove('shadow');
-            board3.classList.remove('shadow');
-
-            SE[3].currentTime = 0;
-            SE[3].volume = 0.1;
-            SE[3].play();
 
         }
     });
@@ -376,9 +354,62 @@ Shiosan.addEventListener('click', () => {
 
     }
 });
+deleteQuestions.addEventListener('click', () => {
+    for(const buffer in words2) {
+        delete words2[buffer];
+
+    }
+    for(const buffer in words3) {
+        delete words3[buffer];
+
+    }
+    for(const buffer in words4) {
+        delete words4[buffer];
+
+    }
+    for(const buffer in words5) {
+        delete words5[buffer];
+
+    }
+    for(const buffer in words6) {
+        delete words6[buffer];
+
+    }
+    for(const buffer in words7) {
+        delete words7[buffer];
+
+    }
+    for(const buffer in wordsNoLimit) {
+        delete wordsNoLimit[buffer];
+
+    }
+
+})
 submitBtn1.addEventListener('click', () => {
     if(reflectQuestion.value && reflectKana.value) {
-        words2[reflectQuestion.value] = reflectKana.value;
+        if(reflectKana.value.length == 2) {
+            words2[reflectQuestion.value] = reflectKana.value;
+
+        } else if(reflectKana.value.length == 3) {
+            words3[reflectQuestion.value] = reflectKana.value;
+
+        } else if(reflectKana.value.length == 4) {
+            words4[reflectQuestion.value] = reflectKana.value;
+
+        } else if(reflectKana.value.length == 5) {
+            words5[reflectQuestion.value] = reflectKana.value;
+
+        } else if(reflectKana.value.length == 6) {
+            words6[reflectQuestion.value] = reflectKana.value;
+
+        } else if(reflectKana.value.length == 7) {
+            words7[reflectQuestion.value] = reflectKana.value;
+
+        } else if(reflectKana.value.length > 7) {
+            wordsNoLimit[reflectQuestion.value] = reflectKana.value;
+            console.log(wordsNoLimit);
+
+        }
 
         reflectQuestion.classList.remove('notFilledIn');
         reflectQuestion.placeholder = '';
@@ -478,6 +509,7 @@ document.addEventListener('keydown', (e) => {
         lastRecord_correct.innerText = '';
         lastRecord_wrong.innerText = '';
         lastRecord_accuracy.innerText = '';
+        lastRecord_SKPM.innerText = '';
         level.innerText = '';
         typeSpeed.innerText = '0';
         totalTypeSpeed.innerText = '0';
@@ -1122,3 +1154,4 @@ const judgeCons = () => {
 
     }
 };
+
