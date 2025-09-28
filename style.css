@@ -203,7 +203,7 @@ form
     border: none;
     border-radius: 20px;
     transform: translate(-50%, -50%);
-    backdrop-filter: url(#wavyFilter);
+    backdrop-filter: url(#wavyFilter), blur(1px);
 
     box-shadow: 
         4px 4px 4px rgba(0, 0, 0, 0.3),
