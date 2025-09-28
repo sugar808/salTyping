@@ -34,7 +34,8 @@ const gauge = document.getElementById('gauge');
 const typeSpeed = document.getElementById('typeSpeed');
 const maxSpeed = document.getElementById('maxSpeed');
 const reflectTime = document.getElementById('reflectTime');
-const combo = document.getElementById('combo');
+const warning1 = document.getElementById('warning1');
+const warning2 = document.getElementById('warning2');
 const q = document.getElementById('q');
 const KanaArea = document.getElementById('KanaArea');
 const reflectRoman = document.getElementById('reflectRoman');
@@ -343,6 +344,8 @@ toggle.addEventListener('change', () => {
 sound_off.addEventListener('change', () => {
     if(!off) {
         off = true;
+        if(warning1.textContent) warning1.innerText = '';
+        if(warning2.textContent) warning2.innerText = '';
 
     } else {
         off = false;
