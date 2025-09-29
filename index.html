@@ -88,11 +88,6 @@
                 <input class="btn" type="radio" name="type_sounds" value="off">off
             </div>
 
-            <div><h4>ゲームモード</h4>
-                <input type="radio" name="game_mode_select" value="hurryUp">hurryUp
-                <input type="radio" name="game_mode_select" value="none" checked>none
-            </div>
-
             <div><h4>Language</h4>
                 <button onclick="location.href = './en/en.html'">Show English Page</button>
             </div>
@@ -117,7 +112,7 @@
     <svg>
         <filter id="wavyFilter">
             <feTurbulence type="fractalNoise" baseFrequency="0.02 0.01" numOctaves="2" result="turb"/>
-            <feDisplacementMap in="SourceGraphic" in2="turb" scale="45" xChannelSelector="A" yChannelSelector="R">
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="A" yChannelSelector="R"/>
         </filter>
     </svg>
 
