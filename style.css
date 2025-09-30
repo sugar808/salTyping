@@ -36,6 +36,8 @@ footer {
 }
 #timeRange::-webkit-slider-thumb {
     appearance: none;
+    width: 10px;
+    height: 10px;
     background-color: blue;
     boder-radius: 50%;
 }
