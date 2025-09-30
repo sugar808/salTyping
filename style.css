@@ -27,21 +27,6 @@ footer {
     left: 10px;
 }
 
-#timeRange {
-    appearance: none;
-}
-#timeRange::-webkit-slider-runnable-track {
-    background: gray;
-    height: 6px;
-}
-#timeRange::-webkit-slider-thumb {
-    appearance: none;
-    width: 10px;
-    height: 10px;
-    background-color: blue;
-    border-radius: 50%;
-}
-
 @font-face {
     font-family: 'Mochi';
     src: url('./fonts/MochiyPopOne-Regular.ttf');
