@@ -34,6 +34,10 @@ footer {
     background: gray;
     height: 6px;
 }
+#timeRange::-webkit-slider-thumb {
+    appearance: none;
+    background: blue;
+}
 
 @font-face {
     font-family: 'Mochi';
