@@ -29,6 +29,8 @@ footer {
 
 #timeRange {
     appearance: none;
+    height: 10px;
+    background: gray;
 }
 
 @font-face {
