@@ -29,8 +29,10 @@ footer {
 
 #timeRange {
     appearance: none;
-    height: 10px;
+}
+#timeRange::-webkit-slider-runnable-track {
     background: gray;
+    height: 6px;
 }
 
 @font-face {
