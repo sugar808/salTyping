@@ -27,6 +27,10 @@ footer {
     left: 10px;
 }
 
+#timeRange {
+    appearance: none;
+}
+
 @font-face {
     font-family: 'Mochi';
     src: url('./fonts/MochiyPopOne-Regular.ttf');
