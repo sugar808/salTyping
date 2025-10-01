@@ -114,7 +114,6 @@ const reflectKana = document.getElementById('reflectKana');
 const submitBtn1 = document.getElementById('submitBtn1');
 
 // board5
-const board5 = document.getElementById('board5');
 const sound_off = document.getElementById('sound_off');
 const keyboard_switch = document.getElementById('keyboard_switch');
 
@@ -181,24 +180,6 @@ let expectedValue4 = '';
 let expectedValue5 = '';
 let expectedValue6 = '';
 
-board5.addEventListener('mousedown', () => {
-    mouseDown = true;
-
-});
-board5.addEventListener('mouseup', () => {
-    mouseDown = false;
-    
-});
-board5.addEventListener('mousemove', (e) => {
-    if(mouseDown) {
-        board5.style.left = e.clientX + 'px';
-        board5.style.top = e.clientY + 'px';
-
-    }
-
-})
-
-
 // 難易度の変更
 difficulty.forEach(diffi => {
     diffi.addEventListener('change', () => {
@@ -239,29 +220,13 @@ difficulty.forEach(diffi => {
 fontType.forEach(type => {
     type.addEventListener('change', () => {
         const html = document.getElementById('html');
-        if(type.value === 'Mochi') {
-            html.classList.add('Mochi');
-            html.classList.remove('Dot');
-            html.classList.remove('Yusei');
-            html.classList.remove('Rockn');
-
-        } else if(type.value === 'Dot') {
+        if(type.value === 'Dot') {
             html.classList.add('Dot');
-            html.classList.remove('Mochi');
             html.classList.remove('Yusei');
-            html.classList.remove('Rockn');
 
         } else if(type.value === 'Yusei') {
             html.classList.add('Yusei');
-            html.classList.remove('Mochi');
             html.classList.remove('Dot');
-            html.classList.remove('Rockn');
-
-        } else if(type.value === 'Rockn') {
-            html.classList.add('Rockn');
-            html.classList.remove('Mochi');
-            html.classList.remove('Dot');
-            html.classList.remove('Yusei');
 
         }
     });
@@ -1143,4 +1108,3 @@ const judgeCons = () => {
 
     }
 };
-
