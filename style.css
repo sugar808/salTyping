@@ -200,6 +200,8 @@ form
     left: 150px;
     width: 18rem;
     height: 4rem;
+    padding-top: 10px;
+    padding-left: 3px;
     border: none;
     border-radius: 20px;
     transform: translate(-50%, -50%);
@@ -212,27 +214,7 @@ form
         inset 4px 4px 4px rgba(0, 0, 0, 0.3),
         inset -4px -4px 4px rgba(255, 255, 255, 0.9);
 }
-.checkboxes {
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border: none;
-    border-radius: 50%;
-    transition: box-shadow .4s ease-in-out;
 
-    box-shadow: 
-        4px 4px 8px rgba(0, 0, 0, 0.3),
-        -4px -4px 4px rgba(255, 255, 255, 0.9),
-        inset 4px 4px 8px transparent,
-        inset -4px -4px 4px transparent;
-}
-.checkboxes:checked {
-    box-shadow: 
-        4px 4px 4px transparent,
-        -4px -4px 4px transparent,
-        inset 4px 4px 4px rgba(0, 0, 0, 0.3),
-        inset -4px -4px 4px rgba(255, 255, 255, 0.9);
-}
 /*
 warning
 */
@@ -266,6 +248,7 @@ warning
 
 .btn {
     appearance: none;
+    vertical-align: middle;
     width: 15px;
     height: 15px;
     border: none;
